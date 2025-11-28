@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CONFIGURAÇÕES DO TAILWIND (MANTIDAS) */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        'dark-fundo': '#2B2B2B', 
+                        'dark-box': '#3A3A3A',  
+                        'trigo': '#f59e0b',     
+                        'texto-claro': '#f8fafc', 
+                    }
+                }
+            }
+        }
+        
+        /* Define o fundo principal e a cor do texto padrão */
+        body {
+            background-color: #2B2B2B; 
+            color: #f8fafc; 
+            font-family: 'Inter', sans-serif;
+        }
+        .reel-container{ width:100%; max-width:400px; margin:0 auto; border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 25px -5px rgba(0,0,0,.5),0 8px 10px -6px rgba(0,0,0,.4); aspect-ratio:9/16; position:relative; background:#000 }
+        .reel-video-placeholder{ width:100%; height:100%; position:relative; }
+        .reel-video-placeholder iframe{ width:100%; height:100%; display:block; border:0 }
+        .reel-overlay{ position:absolute; bottom:0; left:0; right:0; padding:1rem; background:linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0)); }
+        .reel-actions-aside{ position:absolute; top:50%; right:1.5rem; transform:translateY(-50%); }
+        .action-button{ display:flex; flex-direction:column; align-items:center; margin-bottom:1.5rem; color:#f8fafc }
+        .action-button:hover{ color:#f59e0b }
+        .scrollbar-none{ -ms-overflow-style:none; scrollbar-width:none }
+        .scrollbar-none::-webkit-scrollbar{ display:none }
+        .nav-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:40; background:rgba(0,0,0,.45); border-radius:9999px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer }
+        .nav-arrow:hover{ background:rgba(0,0,0,.65); color:#f59e0b }
+        @media (max-width:1024px){ .nav-arrow{ display:none } }
+    </style>
+</head>
+<body>
+
+<header class="w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <img src="trigo.png" class="w-8 h-8 mr-2" alt="Trigo">
+      <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">TRIGO <span class="text-trigo">LIMPO</span></a>
+    </div>
+    <nav class="flex space-x-4 text-sm font-medium">
+      <a href="index.html" class="text-gray-300 hover:text-trigo">Início</a>
+      <a href="materia-reels.html" class="text-trigo border-b-2 border-trigo pb-1">Reels</a>
+      <a href="materia-texto.html" class="text-gray-300 hover:text-trigo">Reportagem</a>
+      <a href="materia-video.html" class="text-gray-300 hover:text-trigo">Vídeo</a>
+      <a href="materia-audio.html" class="text-gray-300 hover:text-trigo">Áudio</a>
+    </nav>
+  </div>
+</header>
+	
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+
+  	<header class="mb-8 text-center">
+    		<h1 class="font-sans text-2xl md:text-3xl font-extrabold text-texto-claro mb-2">Como funcionam as eleições no Brasil?</h1>
+    		<p class="text-sm text-gray-400">Arraste ou use as setas para navegar entre os Reels e entender cada etapa do processo eleitoral.</p>
+  	</header>
+
+  <div class="sm:flex sm:items-start sm:justify-center sm:gap-3">    
+        <div class="hidden sm:flex sm:flex-col w-72">        
+        <div>
+            <h4 class="text-xl font-bold border-b border-trigo text-trigo">Será que há candidatos com processos abertos em SC?</h4>
+            <p class="text-sm text-gray-300 text-justify">Confira o panorama da judicialização, nas eleições de 2020, 2022 e 2024, em Santa Catarina.</p>
+            <a href="materia-texto.html" class="inline-flex items-center justify-center w-full px-2 py-2 bg-trigo text-dark-fundo font-semibold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">Ler reportagem completa</a>
+        </div>
+        
+        <div>
+            <p class="text-xl font-bold border-b border-trigo text-left">A justiça tarda e falha!</p>
+            <p class="text-sm text-gray-300  text-left">Conheça a história do vereador que, mesmo com o registro de candidatura indeferido, foi eleito e cumpriu todo mandato.</p>
+            <a href="materia-video.html" class="inline-flex items-center justify-center w-full px-2 py-2 bg-trigo text-dark-fundo font-semibold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">Assistir a história completa</a>
+        </div>
+
+    </div>
+            <div class="relative w-full max-w-[440px]">
+      <button class="nav-arrow" id="arrow-left" style="left:-52px;" aria-label="Anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="nav-arrow" id="arrow-right" style="right:-52px;" aria-label="Próximo">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+      </button>
+
+       <div id="reels-track" class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory scrollbar-none w-full px-2 py-4" style="scroll-behavior:smooth;">
+
+        <!-- Slides-->
+        <!-- ---------- SLIDE 1 ----------- -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="0">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-0" data-id="4gr1Z0CxYwM" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2">
+			<div class="w-8 h-8 rounded-full bg-dark-fundo flex items-center justify-center border-2 border-trigo overflow-hidden">
+  			<img src="trigo.png" alt="Perfil" class="w-full h-full object-contain">
+			</div>
+                  <p class="font-bold text-lg">@TrigoLimpoOficial</p>
+                </div>
+                <p class="text-sm text-gray-200 mb-2">Como o Brasil vota? Entenda, em segundos, a lógica do nosso sistema eleitoral. 🗳️</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="1">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-1" data-id="WayBazrP6Xw" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2"><img src="trigo.png" class="w-8 h-8 rounded-full border-2 border-trigo"><p class="font-bold text-lg">@TrigoLimpoOficial</p></div>
+                <p class="text-sm text-gray-200 mb-2">Elegibilidade, idade mínima e Ficha Limpa: o filtro que define quem pode entrar na disputa. ⚖️</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="2">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-2" data-id="1fJ3HHvn3fA" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2"><img src="trigo.png" class="w-8 h-8 rounded-full border-2 border-trigo"><p class="font-bold text-lg">@TrigoLimpoOficial</p></div>
+                <p class="text-sm text-gray-200 mb-2">Filiação, convenção e registro no TSE: o passo a passo que transforma nome em candidato. ✍️</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="3">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-3" data-id="pJl3SUxLbmQ" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2"><img src="trigo.png" class="w-8 h-8 rounded-full border-2 border-trigo"><p class="font-bold text-lg">@TrigoLimpoOficial</p></div>
+                <p class="text-sm text-gray-200 mb-2">Ideias podem. Pedido de voto, só depois. E tudo precisa ser declarado — até o último centavo. 💰</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="4">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-4" data-id="rT73CQC_exQ" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2"><img src="trigo.png" class="w-8 h-8 rounded-full border-2 border-trigo"><p class="font-bold text-lg">@TrigoLimpoOficial</p></div>
+                <p class="text-sm text-gray-200 mb-2">Venceu? Ainda falta o diploma. Sem ele, não existe posse. 🎓</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 -->
+        <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="5">
+          <div class="reel-container">
+            <div class="reel-video-placeholder">
+              <div id="player-5" data-id="Gd0lJn-yHT0" class="w-full h-full"></div>
+              <div class="reel-overlay">
+                <div class="flex items-center space-x-3 mb-2"><img src="trigo.png" class="w-8 h-8 rounded-full border-2 border-trigo"><p class="font-bold text-lg">@TrigoLimpoOficial</p></div>
+                <p class="text-sm text-gray-200 mb-2">Sim: dá para vencer sem ter o registro deferido. E o mandato pode cair depois. ⚠️</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+        <div class="hidden sm:flex sm:flex-col sm:space-y-80 w-72">
+        
+        <div>
+            <h4 class="text-xl font-bold border-b border-trigo text-trigo"> O que pode ser feito?</h4>
+            <p class="text-sm text-gray-300 text-justify ">Especialistas comentam os caminhos para melhorar a judicialização eleitoral</p>
+            <a href="materia-audio.html" class="inline-flex items-center justify-center w-full px-2 py-2 bg-trigo text-dark-fundo font-semibold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">Ouvir análise dos especialistas</a>
+        </div>       
+       
+    </div>
+    
+ </div>
+ 	<div>
+            <p class="text-sm text-gray-300 font-normal text-center"><strong> Roteiro: </strong><span class="font-light"> Jair Bach Filho; </span><strong> Captação de vídeo:</strong><span class="font-light"> Ana Rodrigues | Flávia de Marco;</span><strong> Edição:</strong><span class="font-light"> Ana Rodrigues</span></p>
+         
+        </div>
+</main>
+
+<footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+    <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+  </div>
+</footer>
+
+<script>
+  const track = document.getElementById('reels-track');
+  const slides = Array.from(track.querySelectorAll('.slide'));
+  const left = document.getElementById('arrow-left');
+  const right = document.getElementById('arrow-right');
+
+  function currentCenterIndex(){
+    const trackRect = track.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width/2;
+    let best = 0; let bestDist = Infinity;
+    slides.forEach((s,i)=>{
+      const r = s.getBoundingClientRect();
+      const slideCenter = r.left + r.width/2;
+      const dist = Math.abs(centerX - slideCenter);
+      if(dist < bestDist){ bestDist = dist; best = i; }
+    });
+    return best;
+  }
+
+  function scrollToIndex(index){
+    const target = slides[index];
+    if(!target) return;
+    target.scrollIntoView({behavior:'smooth', inline:'center'});
+  }
+
+  left && left.addEventListener('click', ()=>{
+    const idx = currentCenterIndex();
+    scrollToIndex(Math.max(0, idx-1));
+  });
+
+  right && right.addEventListener('click', ()=>{
+    const idx = currentCenterIndex();
+    scrollToIndex(Math.min(slides.length-1, idx+1));
+  });
+
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowLeft') left && left.click();
+    if(e.key === 'ArrowRight') right && right.click();
+  });
+
+  // YT API
+  const players = [];
+
+  (function loadYT(){
+    if(window.YT && window.YT.Player){ onYouTubeIframeAPIReady(); return; }
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  })();
+
+  function onYouTubeIframeAPIReady(){
+    slides.forEach((s,i)=>{
+      const iframe = document.getElementById('player-'+i);
+      const videoId = iframe.dataset.id;
+
+      players[i] = new YT.Player('player-'+i, {
+        height: '576', width: '315',
+        videoId: videoId,
+        playerVars: {
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1,
+          mute: 0
+        },
+        events: {
+          onReady: (event)=>{
+            event.target.unmute();
+            event.target.getIframe().style.width = '100%';
+            event.target.getIframe().style.height = '100%';
+          },
+
+          // ⭐ AVANÇO AUTOMÁTICO QUANDO O VÍDEO ACABA ⭐
+          onStateChange: (e)=>{
+            if (e.data === YT.PlayerState.ENDED) {
+              const idx = slides.findIndex(s => s.contains(e.target.getIframe()));
+              const next = (idx + 1) % slides.length;
+              scrollToIndex(next);
+              setActive(next);
+            }
+          }
+        }
+      });
+    });
+
+    setTimeout(()=>{ setActive(0); scrollToIndex(0); }, 300);
+  }
+
+  function setActive(index){
+    slides.forEach((s,i)=>{
+      const player = players[i];
+      if(!player) return;
+      if(i === index){
+        try{ player.playVideo(); }catch(err){}
+      } else {
+        try{ player.pauseVideo(); }catch(err){}
+      }
+    });
+  }
+
+  let scrollTimer = null;
+  track.addEventListener('scroll', ()=>{
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(()=>{
+      const idx = currentCenterIndex();
+      setActive(idx);
+    }, 120);
+  });
+</script>
+
+</body>
+</html>

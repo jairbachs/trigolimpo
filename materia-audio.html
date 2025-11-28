@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast: A Regulamentação da IA | Trigo Limpo</title>
+    <!-- Carrega o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configurações customizadas do Tailwind: Cores Dark Mode e Destaque 'Trigo' */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'Times New Roman', 'serif'], /* Fonte serif para o corpo do texto */
+                    },
+                    colors: {
+                        /* NOVAS CORES */
+                        'dark-fundo': '#2B2B2B', /* NOVO: Fundo principal */
+                        'dark-box': '#3A3A3A',  /* NOVO: Fundo dos cards/players (mais claro que o fundo) */
+                        'trigo': '#FFD700',     /* NOVO: Amarelo Dourado para Destaque */
+                        'texto-claro': '#E0E0E0', /* NOVO: Texto principal (Títulos) */
+                    }
+                }
+            }
+        }
+        
+        /* Define o fundo principal e a cor do texto padrão */
+        body {
+            background-color: #2B2B2B; /* NOVO: dark-fundo */
+            color: #E0E0E0; /* NOVO: texto-claro */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o corpo do artigo - usando fonte Serif para leitura */
+        .article-body p, .article-body li {
+            font-family: 'Georgia', 'Times New Roman', 'serif';
+            font-size: 1.1rem; /* Um pouco maior para conforto */
+            line-height: 1.8;
+            color: #C0C0C0; /* NOVO: Cor de texto mais suave para o corpo */
+        }
+        .article-body h2 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o parágrafo introdutório (lead) */
+        .lead {
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 2rem; /* leading-8 */
+            color: #E0E0E0; /* NOVO: Usa a cor texto-claro */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER (Fixo e Responsivo) -->
+    <header class="fixed top-0 left-0 w-full bg-dark-box border-b border-gray-700 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            
+            <!-- Logotipo "TRIGO LIMPO" com Ícone de Trigo SVG -->
+            <div class="flex items-center space-x-2">
+                 <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
+                    <path d="M12 2v20"/>
+                    <path d="M5 10c0 5 7 2 7 2s7 3-7 2"/>
+                    <path d="M5 14c0 5 7 2 7 2s7 3-7 2"/>
+                    <path d="M19 10c0 5-7 2-7 2s-7 3 7 2"/>
+                    <path d="M19 14c0 5-7 2-7 2s-7 3 7 2"/>
+                </svg>
+                <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
+                    TRIGO <span class="text-trigo">LIMPO</span>
+                </a>
+            </div>
+
+            <!-- Navegação (Reordenada) -->
+            <nav class="flex space-x-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
+                <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
+                <a href="materia-texto.html" class="text-gray-300 hover:text-trigo transition duration-150">Reportagem</a>
+                <a href="materia-video.html" class="text-gray-300 hover:text-trigo transition duration-150">Vídeo</a>
+                <a href="materia-audio.html" class="text-trigo border-b-2 border-trigo pb-1">Áudio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DO PODCAST -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+        
+        <!-- TÍTULO E METADADOS -->
+        <header class="text-center mb-10">
+            <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Podcast Exclusivo</p>
+            <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
+                Regulamentação e Transparência: Como Controlar o Incontrolável?
+            </h1>
+            <p class="text-gray-500 mt-4 text-md">
+                Episódio #31 - <span class="font-semibold text-trigo">Os Bastidores da IA</span> | Duração: 42:15 min
+            </p>
+        </header>
+
+        <!-- PLAYER DE ÁUDIO E INFORMAÇÕES -->
+        <div class="max-w-3xl mx-auto flex flex-col lg:flex-row gap-8">
+            
+            <!-- Player de Áudio (Coluna Principal) -->
+            <div class="lg:w-2/3 audio-player-card p-6 rounded-3xl border-2 border-gray-700">
+                
+                <div class="flex items-center space-x-4 mb-4">
+                    <img src="https://placehold.co/100x100/f59e0b/0f172a?text=POD" alt="Capa do Podcast" class="w-24 h-24 rounded-xl object-cover border-4 border-trigo">
+                    <div>
+                        <p class="text-sm text-gray-400">Trigo Limpo Podcast</p>
+                        <h2 class="text-xl font-bold text-texto-claro">Como Controlar o Incontrolável?</h2>
+                        <p class="text-sm text-gray-500">Com Ana Souza e Pedro Lima</p>
+                    </div>
+                </div>
+
+                <!-- Simulação de Player -->
+                <div class="w-full bg-gray-600 h-2 rounded-full mb-3 relative">
+                    <div class="bg-trigo h-2 rounded-full" style="width: 45%;"></div>
+                    <div class="absolute top-1/2 -mt-2 -ml-2 w-4 h-4 bg-trigo rounded-full shadow-lg border-2 border-dark-box" style="left: 45%;"></div>
+                </div>
+                
+                <div class="flex justify-between items-center text-sm text-gray-400 mb-4">
+                    <span>18:55</span>
+                    <span>42:15</span>
+                </div>
+
+                <!-- Controles do Player -->
+                <div class="flex justify-center items-center space-x-6 text-trigo">
+                    <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18V6l10 6-10 6z" transform="translate(4 0)"/></svg> <!-- Rewind -->
+                    </button>
+                    <button class="p-4 bg-trigo text-dark-fundo rounded-full shadow-xl hover:bg-yellow-600 transition duration-150">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> <!-- Play -->
+                    </button>
+                    <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M18 6v12H8V6h10z" transform="translate(-4 0) rotate(180 12 12)"/></svg> <!-- Forward -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detalhes do Episódio (Coluna Lateral) -->
+            <aside class="lg:w-1/3 p-6 rounded-3xl bg-dark-box border border-gray-700">
+                <h3 class="text-xl font-bold text-trigo mb-3">O que você vai ouvir:</h3>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li class="flex items-start">
+                        <span class="text-trigo mr-2 font-bold flex-none">0:00</span> Introdução: Ameaça vs. Inovação.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-trigo mr-2 font-bold flex-none">05:30</span> Entrevista: O Novo Marco Legal da IA.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-trigo mr-2 font-bold flex-none">15:40</span> Case Study: Algoritmos de Crédito e Vieses.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-trigo mr-2 font-bold flex-none">28:00</span> O Debate Global: EUA vs. União Europeia.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-trigo mr-2 font-bold flex-none">38:15</span> Conclusão e Próximos Passos.
+                    </li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- Transcrição e Notas do Episódio -->
+        <article class="max-w-4xl mx-auto mt-12">
+            
+            <h2 class="text-3xl font-bold text-trigo mb-4 mt-8 font-serif border-b border-gray-700 pb-2">Notas do Episódio</h2>
+            <p class="lead mb-8 italic">
+                A discussão centraliza a dificuldade de impor regras a sistemas que aprendem e evoluem constantemente. A legislação precisa ser ágil, mas a burocracia do processo legislativo é lenta. O podcast convida à reflexão sobre o equilíbrio entre a proteção do cidadão e o fomento à inovação tecnológica.
+            </p>
+
+            <p class="mb-6 text-gray-300">
+                Os convidados discutem a proposta de criação de um "selo de transparência" algorítmica, onde as empresas seriam obrigadas a divulgar publicamente os critérios básicos de ranqueamento e recomendação. A ideia é criar uma espécie de "informação nutricional" para os algoritmos, permitindo que os usuários e reguladores compreendam melhor o que está sendo priorizado em seus feeds.
+            </p>
+
+            <!-- Chamada para Assinatura -->
+            <div class="bg-dark-box p-6 rounded-xl shadow-lg border-t-2 border-trigo mt-10 text-center">
+                <h3 class="text-2xl font-bold text-texto-claro mb-3">Assine para Não Perder!</h3>
+                <p class="text-gray-400 mb-4">
+                    Disponível em todas as plataformas de podcast. Siga-nos para receber novos episódios todas as quintas-feiras.
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- FOOTER (Reutilizado) -->
+    <footer class="bg-dark-box border-t border-gray-700 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <div class="space-x-4 text-xs">
+                <a href="#" class="hover:text-trigo">Termos de Uso</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+

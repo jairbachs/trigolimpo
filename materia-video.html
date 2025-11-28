@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo: Decifrando o Algoritmo | Trigo Limpo</title>
+    <!-- Carrega o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configurações customizadas do Tailwind: Cores Dark Mode e Destaque 'Trigo' */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'Times New Roman', 'serif'], /* Fonte serif para o corpo do texto */
+                    },
+                    colors: {
+                        /* NOVAS CORES */
+                        'dark-fundo': '#2B2B2B', /* NOVO: Fundo principal */
+                        'dark-box': '#3A3A3A',  /* NOVO: Fundo dos cards/players (mais claro que o fundo) */
+                        'trigo': '#FFD700',     /* NOVO: Amarelo Dourado para Destaque */
+                        'texto-claro': '#E0E0E0', /* NOVO: Texto principal (Títulos) */
+                    }
+                }
+            }
+        }
+        
+        /* Define o fundo principal e a cor do texto padrão */
+        body {
+            background-color: #2B2B2B; /* NOVO: dark-fundo */
+            color: #E0E0E0; /* NOVO: texto-claro */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o corpo do artigo - usando fonte Serif para leitura */
+        .article-body p, .article-body li {
+            font-family: 'Georgia', 'Times New Roman', 'serif';
+            font-size: 1.1rem; /* Um pouco maior para conforto */
+            line-height: 1.8;
+            color: #C0C0C0; /* NOVO: Cor de texto mais suave para o corpo */
+        }
+        .article-body h2 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o parágrafo introdutório (lead) */
+        .lead {
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 2rem; /* leading-8 */
+            color: #E0E0E0; /* NOVO: Usa a cor texto-claro */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER (Fixo e Responsivo) -->
+    <header class="fixed top-0 left-0 w-full bg-dark-box border-b border-gray-700 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            
+            <!-- Logotipo "TRIGO LIMPO" com Ícone de Trigo SVG -->
+            <div class="flex items-center space-x-2">
+                 <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
+                    <path d="M12 2v20"/>
+                    <path d="M5 10c0 5 7 2 7 2s7 3-7 2"/>
+                    <path d="M5 14c0 5 7 2 7 2s7 3-7 2"/>
+                    <path d="M19 10c0 5-7 2-7 2s-7 3 7 2"/>
+                    <path d="M19 14c0 5-7 2-7 2s-7 3 7 2"/>
+                </svg>
+                <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
+                    TRIGO <span class="text-trigo">LIMPO</span>
+                </a>
+            </div>
+
+            <!-- Navegação (Reordenada) -->
+            <nav class="flex space-x-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
+                <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
+                <a href="materia-texto.html" class="text-gray-300 hover:text-trigo transition duration-150">Reportagem</a>
+                <a href="materia-video.html" class="text-trigo border-b-2 border-trigo pb-1">Vídeo</a>
+                <a href="materia-audio.html" class="text-gray-300 hover:text-trigo transition duration-150">Áudio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DO ARTIGO DE VÍDEO -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+        
+        <!-- TÍTULO E METADADOS -->
+        <header class="text-center mb-10">
+            <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Multimídia & Análise</p>
+            <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
+                Decifrando o Algoritmo: O Documentário que Ninguém Quer que Você Assista
+            </h1>
+            <p class="text-gray-500 mt-4 text-md">
+                Vídeo por <span class="font-semibold text-trigo">Time de Produção TL</span> | Duração: 18:30 min
+            </p>
+        </header>
+
+        <!-- PLAYER DE VÍDEO RESPONSIVO -->
+        <div class="max-w-4xl mx-auto mb-10">
+            <div class="video-container shadow-2xl">
+                <!-- Placeholder para o player de vídeo -->
+                <div class="video-placeholder flex items-center justify-center bg-dark-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <p class="absolute text-xl font-semibold opacity-80">Documentário Placeholder</p>
+                </div>
+                <!-- Em produção real, o iframe ou o player seria inserido aqui -->
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-2">Clique para assistir (Simulação)</p>
+        </div>
+
+        <!-- CORPO DO TEXTO (Transcrição/Análise) -->
+        <article class="max-w-4xl mx-auto">
+            
+            <!-- Lead (Parágrafo Introdutório) -->
+            <p class="lead mb-8 border-l-4 border-trigo pl-4 italic">
+                O documentário "Decifrando o Algoritmo" é o ponto de partida para entender como as tecnologias que usamos diariamente remodelam nossa percepção de mundo. Nossa equipe detalha os bastidores da indústria de Big Tech e o custo social da otimização constante.
+            </p>
+
+            <!-- Seção 1: Principais Pontos do Documentário -->
+            <h2 class="text-3xl font-bold text-trigo mb-4 mt-8 font-serif">A Estrutura de Recomendação</h2>
+            <p class="mb-6 text-gray-300">
+                O documentário foca em três pilares do algoritmo: a similaridade de conteúdo, a popularidade e a atenção (o tempo que você passa assistindo). A combinação desses fatores cria um sistema que é brilhante em manter você engajado, mas falha miseravelmente em apresentar uma visão de mundo completa e isenta. A seguir, a transcrição de trechos-chave do nosso documentário.
+            </p>
+
+            <!-- Transcrição de Trecho -->
+            <div class="bg-dark-box p-4 rounded-lg border-l-4 border-gray-600 my-6">
+                <p class="text-sm font-medium text-trigo mb-2">Transcrição (Minuto 04:15)</p>
+                <p class="text-gray-300 italic">
+                    <span class="font-bold">Narrador:</span> "Quando dizemos que a máquina está aprendendo, estamos, na verdade, dizendo que ela está se tornando extremamente boa em prever o seu próximo clique. A otimização não é pela felicidade ou pela verdade, é pela permanência. E é aí que o perigo reside."
+                </p>
+            </div>
+
+            <!-- Seção 2: Entrevistas Chave -->
+            <h2 class="text-3xl font-bold text-trigo mb-4 mt-8 font-serif">As Entrevistas Chave</h2>
+            <p class="mb-6 text-gray-300">
+                Trazemos especialistas em ciência de dados e ex-funcionários de grandes plataformas para expor as prioridades corporativas que moldam o algoritmo. O consenso é alarmante: a escala em que as plataformas operam tornou inviável a moderação ética, deixando o 'engajamento' como o único e real juiz do que se torna viral.
+            </p>
+            
+        </article>
+
+    </main>
+
+    <!-- FOOTER (Reutilizado) -->
+    <footer class="bg-dark-box border-t border-gray-700 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <div class="space-x-4 text-xs">
+                <a href="#" class="hover:text-trigo">Termos de Uso</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+

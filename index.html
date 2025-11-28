@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CONFIGURAÇÕES DO TAILWIND (MANTIDAS) */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        'dark-fundo': '#2B2B2B', 
+                        'dark-box': '#3A3A3A',  
+                        'trigo': '#f59e0b',     
+                        'texto-claro': '#f8fafc', 
+                    }
+                }
+            }
+        }
+        
+        /* Define o fundo principal e a cor do texto padrão */
+        body {
+            background-color: #2B2B2B; 
+            color: #f8fafc;          
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o container de vídeo responsivo (aspect-ratio 16:9) */
+        .video-container-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem; 
+        }
+        .video-container-wrapper .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* AJUSTES ESSENCIAIS PARA O REELS (ESTEIRA E MINIATURA) */
+
+        /* 1. Esconde o scroll padrão e permite que o JS o controle */
+        .reels-container {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            overflow-x: hidden !important; 
+        }
+        .reels-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+        
+        /* 2. Define a altura e largura FIXAS e iguais para o card (QUADRADO) */
+        .reel-card {
+            position: relative; /* Essencial para posicionar o título de forma absoluta */
+            width: 192px;  /* 12rem = 192px */
+            height: 192px; /* 12rem = 192px */
+        }
+        
+        /* 3. Garante que a imagem ocupe 100% da altura do card */
+        .reel-thumbnail-placeholder {
+            height: 100%; 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* 4. Overlay Escuro */
+        .reel-thumbnail-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); 
+            transition: background 0.3s;
+        }
+        .reel-card:hover .reel-thumbnail-placeholder::after {
+             background: rgba(0, 0, 0, 0.75); /* Escurece mais no hover */
+        }
+
+        /* 5. Estilo para a caixa de título (tooltip) */
+        .reel-title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px;
+            /* Inicia transparente e fora da vista */
+            transform: translateY(100%); 
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            background: rgba(0, 0, 0, 0.85); /* Fundo escuro para o texto */
+            z-index: 10;
+            border-bottom-left-radius: 0.75rem; /* rounded-xl */
+            border-bottom-right-radius: 0.75rem;
+        }
+
+        /* 6. Efeito de Hover - Mostra o título */
+        .reel-card:hover .reel-title-overlay {
+            transform: translateY(0); /* Desliza para cima */
+            opacity: 1;
+        }
+        
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="top-0 left-0 w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            
+            <div class="flex items-center space-x-2">
+                <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2"> 
+                <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
+                    TRIGO <span class="text-trigo">LIMPO</span>
+                </a>
+            </div>
+
+            <nav class="flex space-x-4 text-sm font-medium">
+                <a href="index.html" class="text-trigo border-b-2 border-trigo pb-1">Início</a>
+                <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
+                <a href="materia-texto.html" class="text-gray-300 hover:text-trigo transition duration-150">Reportagem</a>
+                <a href="materia-video.html" class="text-gray-300 hover:text-trigo transition duration-150">Vídeo</a>
+                <a href="materia-audio.html" class="text-gray-300 hover:text-trigo transition duration-150">Áudio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+        
+        <section class="mb-8">
+            <div class="bg-dark-box rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-end min-h-[400px]"
+                 style="background-image: url('DSC07350 (1).png'); background-size: cover; background-position: center;">
+                
+                <div class="absolute inset-0 bg-black/60 hover:bg-black/75 transition duration-500 rounded-3xl"></div>
+                
+                <div class="relative z-10 max-w-4xl">
+                    <p class="text-sm font-semibold uppercase tracking-widest text-trigo mb-2">ESPECIAL</p>
+                    <h1 class="text-6xl md:text-3xl font-extrabold text-white leading-tight mb-4 font-serif">
+                        Inconsistência no sistema de estatísticas eleitorais do TSE impede a transparência sobre a judicialização dos pleitos catarinenses
+                    </h1>
+                    <p class="text-xl text-gray italic">
+                        Segundo o tribunal,a prioridade sãos os dados disponibilizados ao portal do CNJ, utilizados para verificação das metas nacionais de julgamento
+
+                    </p>
+                    <a href="materia-texto.html" class="inline-flex items-center mt-6 px-6 py-3 bg-trigo text-dark-fundo font-bold rounded-full text-md hover:bg-amber-400 transition duration-300 shadow-lg">
+                        Leia Agora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+            
+            <div class="lg:col-span-8 bg-dark-box rounded-3xl shadow-xl overflow-hidden flex flex-col border border-gray-700">
+                <div class="video-container-wrapper bg-black">
+                    <div class="video-placeholder flex items-center justify-center bg-dark-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-trigo/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        <p class="absolute text-2xl font-semibold opacity-80 text-white">Documentário em Destaque</p>
+                    </div>
+                </div>
+                <div class="p-4 md:p-6 flex-shrink-0">
+                    <h2 class="text-2xl font-bold text-texto-claro truncate">A justiça tarda e falha! </h2>
+                    <p class="text-sm text-gray-400 mt-1">Conheça a história do vereador que, mesmo com o registro de candidatura indeferido, foi eleito e cumpriu todo mandato</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 bg-dark-box rounded-3xl shadow-xl p-6 flex flex-col justify-between border border-gray-700">
+                <div class="flex items-start mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-trigo mr-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg>
+                    <div>
+                        <p class="text-lg font-bold text-texto-claro">O que pode ser feito?</p>
+                        <p class="text-xs text-gray-400">Especialistas comentam os caminhos para melhorar a questão da  judicialização eleitoral</p>
+                    </div>
+                </div>
+                
+                <div class="w-full mb-6">
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>04:32</span>
+                        <span>25:00</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700 rounded-full mt-1">
+                        <div class="bg-trigo h-2 rounded-full w-1/5"></div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3 justify-center">
+                    <button class="text-gray-400 hover:text-trigo transition duration-150" aria-label="Voltar 15 segundos">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19l-7-7 7-7M14 12H4M16 5v14M20 5v14"/></svg>
+                    </button>
+                    <button class="bg-trigo text-dark-fundo rounded-full p-3 hover:bg-amber-400 transition duration-150 shadow-md shadow-trigo/50" aria-label="Play">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="text-gray-400 hover:text-trigo transition duration-150" aria-label="Avançar 15 segundos">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5l7 7-7 7M10 12h10M4 5v14M8 5v14"/></svg>
+                    </button>
+                </div>
+                
+                <a href="materia-audio.html" class="text-center mt-6 text-sm font-semibold text-trigo hover:underline">Ver Transcrição do Áudio</a>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-3xl font-bold font-serif text-texto-claro">Como funcionam as eleições no Brasil?
+</h2>
+            <p class="text-sm text-gray-400 mt-1 border-b border-gray-500 pb-2">Em poucos segundos a gente te explica como funciona o sistema eleitoral brasileiro. </p>
+            
+            <div id="reels-list" class="reels-container flex flex-nowrap space-x-6 pb-6 pt-2 -mx-4 sm:mx-0" style="scroll-behavior: smooth;">
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <div class="space-x-4 text-xs">
+                <a href="#" class="hover:text-trigo">Termos de Uso</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
+                <span class="text-trigo">|</span>
+                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    const reelsData = [
+        { videoId: "4gr1Z0CxYwM", title: "Como o Brasil vota? Entenda, em segundos, a lógica do nosso sistema eleitoral." },
+        { videoId: "WayBazrP6Xw", title: "Elegibilidade, idade mínima e Ficha Limpa: o filtro que define quem pode entrar na disputa." },
+        { videoId: "1fJ3HHvn3fA", title: "Filiação, convenção e registro no TSE: o passo a passo que transforma nome em candidato." },
+        { videoId: "pJl3SUxLbmQ", title: "Ideias podem. Pedido de voto, só depois. E tudo precisa ser declarado — até o último centavo." },
+        { videoId: "rT73CQC_exQ", title: "Venceu? Ainda falta o diploma. Sem ele, não existe posse." },
+        { videoId: "Gd0lJn-yHT0", title: "Sim: dá para vencer sem ter o registro deferido. E o mandato pode cair depois." },
+        // Duplicando os itens para criar o efeito de loop infinito suave
+        { videoId: "4gr1Z0CxYwM", title: "Como o Brasil vota? Entenda, em segundos, a lógica do nosso sistema eleitoral." },
+        { videoId: "WayBazrP6Xw", title: "Elegibilidade, idade mínima e Ficha Limpa: o filtro que define quem pode entrar na disputa." },
+    ];
+
+    const reelsContainer = document.getElementById('reels-list');
+    
+    // Dimensões dos cards para o cálculo da rolagem
+    const cardSize = 192; 
+    const cardSpacing = 24; 
+    const stepSize = cardSize + cardSpacing; 
+    let scrollPosition = 0;
+    let autoScrollInterval;
+
+    function getYoutubeThumbnailUrl(videoId) {
+        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+
+    function createReelCard(reel) {
+        const cardLink = document.createElement('a');
+        cardLink.href = "materia-reels.html"; 
+        
+        cardLink.className = "reel-card flex-shrink-0 bg-dark-box rounded-xl shadow-xl overflow-hidden hover:scale-[1.02] hover:shadow-trigo/30 transition duration-300 cursor-pointer";
+        
+        cardLink.innerHTML = `
+            <div class="reel-thumbnail-placeholder" style="background-image: url('${getYoutubeThumbnailUrl(reel.videoId)}');">
+                <svg class="w-10 h-10 text-trigo relative z-20 transition duration-300 transform hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M7 6v12l10-6z"/></svg>
+            </div>
+            <div class="reel-title-overlay">
+                <p class="text-sm font-semibold text-white">${reel.title}</p>
+            </div>
+            `;
+
+        return cardLink;
+    }
+
+    function renderReels() {
+        reelsData.forEach(reel => {
+            const card = createReelCard(reel);
+            reelsContainer.appendChild(card);
+        });
+        
+        const endSpacer = document.createElement('div');
+        endSpacer.className = 'flex-shrink-0 w-1';
+        reelsContainer.appendChild(endSpacer);
+        
+        startAutoScroll();
+    }
+
+    // LÓGICA DO CARROSSEL DE ESTEIRA
+    function scrollNext() {
+        const numOriginalItems = reelsData.length / 2;
+        const totalContentWidth = numOriginalItems * stepSize;
+
+        scrollPosition += stepSize;
+        reelsContainer.scrollLeft = scrollPosition;
+
+        if (scrollPosition >= totalContentWidth) {
+            setTimeout(() => {
+                reelsContainer.style.scrollBehavior = 'auto'; 
+                scrollPosition = 0;
+                reelsContainer.scrollLeft = scrollPosition;
+                setTimeout(() => {
+                    reelsContainer.style.scrollBehavior = 'smooth';
+                }, 50); 
+            }, 300); 
+        }
+    }
+
+    function startAutoScroll() {
+        // Rola a cada 3 segundos
+        autoScrollInterval = setInterval(scrollNext, 3000);
+
+        // Pausa a rolagem ao passar o mouse
+        reelsContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        });
+
+        // Retoma a rolagem ao tirar o mouse
+        reelsContainer.addEventListener('mouseleave', () => {
+            if (!autoScrollInterval) { 
+                autoScrollInterval = setInterval(scrollNext, 3000);
+            }
+        });
+    }
+
+    // Inicializa a renderização
+    renderReels();
+</script>
+</body>
+</html>
+
+
+
