@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vídeo: Decifrando o Algoritmo | Trigo Limpo</title>
-    <!-- Carrega o Tailwind CSS para estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Configurações customizadas do Tailwind: Cores Dark Mode e Destaque 'Trigo' */
@@ -18,8 +17,8 @@
                     colors: {
                         /* NOVAS CORES */
                         'dark-fundo': '#2B2B2B', /* NOVO: Fundo principal */
-                        'dark-box': '#3A3A3A',  /* NOVO: Fundo dos cards/players (mais claro que o fundo) */
-                        'trigo': '#FFD700',     /* NOVO: Amarelo Dourado para Destaque */
+                        'dark-box': '#3A3A3A',  /* NOVO: Fundo dos cards/players (mais claro que o fundo) */
+                        'trigo': '#FFD700',     /* NOVO: Amarelo Dourado para Destaque */
                         'texto-claro': '#E0E0E0', /* NOVO: Texto principal (Títulos) */
                     }
                 }
@@ -28,9 +27,10 @@
         
         /* Define o fundo principal e a cor do texto padrão */
         body {
-            background-color: #2B2B2B; /* NOVO: dark-fundo */
-            color: #E0E0E0; /* NOVO: texto-claro */
+            background-color: #2B2B2B; /* dark-fundo */
+            color: #E0E0E0; /* texto-claro */
             font-family: 'Inter', sans-serif;
+            padding-top: 64px; /* Adiciona padding para evitar que o conteúdo fique atrás do header fixo */
         }
 
         /* Estilo para o corpo do artigo - usando fonte Serif para leitura */
@@ -38,7 +38,7 @@
             font-family: 'Georgia', 'Times New Roman', 'serif';
             font-size: 1.1rem; /* Um pouco maior para conforto */
             line-height: 1.8;
-            color: #C0C0C0; /* NOVO: Cor de texto mais suave para o corpo */
+            color: #C0C0C0; /* Cor de texto mais suave para o corpo */
         }
         .article-body h2 {
             font-family: 'Inter', sans-serif;
@@ -48,32 +48,45 @@
         .lead {
             font-size: 1.5rem; /* text-2xl */
             line-height: 2rem; /* leading-8 */
-            color: #E0E0E0; /* NOVO: Usa a cor texto-claro */
+            color: #E0E0E0; /* Usa a cor texto-claro */
             font-style: italic;
+        }
+
+        /* Estilo para o Player de Vídeo Responsivo (16:9) */
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 * 100) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem; /* rounded-xl */
+        }
+        .video-container iframe,
+        .video-container .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-container .video-placeholder {
+            /* Estilo para o placeholder/simulação de vídeo */
+            background-color: #3A3A3A; /* dark-box */
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER (Fixo e Responsivo) -->
     <header class="fixed top-0 left-0 w-full bg-dark-box border-b border-gray-700 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             
-            <!-- Logotipo "TRIGO LIMPO" com Ícone de Trigo SVG -->
             <div class="flex items-center space-x-2">
-                 <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
-                    <path d="M12 2v20"/>
-                    <path d="M5 10c0 5 7 2 7 2s7 3-7 2"/>
-                    <path d="M5 14c0 5 7 2 7 2s7 3-7 2"/>
-                    <path d="M19 10c0 5-7 2-7 2s-7 3 7 2"/>
-                    <path d="M19 14c0 5-7 2-7 2s-7 3 7 2"/>
-                </svg>
+                <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
                 <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
                     TRIGO <span class="text-trigo">LIMPO</span>
                 </a>
             </div>
 
-            <!-- Navegação (Reordenada) -->
             <nav class="flex space-x-4 text-sm font-medium">
                 <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
                 <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
@@ -84,66 +97,57 @@
         </div>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL DO ARTIGO DE VÍDEO -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 mt-12"> 
         
-        <!-- TÍTULO E METADADOS -->
-        <header class="text-center mb-10">
-            <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Multimídia & Análise</p>
+        <header class="text-center mb-10 pt-10">
+            <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Reportagem em vídeo</p>
             <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
-                Decifrando o Algoritmo: O Documentário que Ninguém Quer que Você Assista
-            </h1>
-            <p class="text-gray-500 mt-4 text-md">
-                Vídeo por <span class="font-semibold text-trigo">Time de Produção TL</span> | Duração: 18:30 min
-            </p>
+                Com ações pendentes, candidatos se beneficiam da morosidade e cumprem mandatos inteiros.
+            </h1>           
         </header>
 
-        <!-- PLAYER DE VÍDEO RESPONSIVO -->
-        <div class="max-w-4xl mx-auto mb-10">
+        <div class="max-w-5xl mx-auto mb-10">
             <div class="video-container shadow-2xl">
-                <!-- Placeholder para o player de vídeo -->
                 <div class="video-placeholder flex items-center justify-center bg-dark-box">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     <p class="absolute text-xl font-semibold opacity-80">Documentário Placeholder</p>
                 </div>
-                <!-- Em produção real, o iframe ou o player seria inserido aqui -->
             </div>
-            <p class="text-center text-sm text-gray-500 mt-2">Clique para assistir (Simulação)</p>
+
         </div>
+        <div class="mt-12">
+            <h2 class="font-sans text-2xl font-bold text-trigo mb-6 text-center">Navegue pela Reportagem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
-        <!-- CORPO DO TEXTO (Transcrição/Análise) -->
-        <article class="max-w-4xl mx-auto">
-            
-            <!-- Lead (Parágrafo Introdutório) -->
-            <p class="lead mb-8 border-l-4 border-trigo pl-4 italic">
-                O documentário "Decifrando o Algoritmo" é o ponto de partida para entender como as tecnologias que usamos diariamente remodelam nossa percepção de mundo. Nossa equipe detalha os bastidores da indústria de Big Tech e o custo social da otimização constante.
-            </p>
+                <a href="materia-texto.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
+                        <path fill-rule="evenodd" d="M11.54 22.351A.75.75 0 0 1 12 22.5c.379 0 .752-.164 1.018-.476l.243-.289a4.5 4.5 0 0 0 2.214-4.872l-.128-1.037a.75.75 0 0 1 .128-.535l1.638-1.639c.07-.07.126-.155.161-.252a1.986 1.986 0 0 0 .193-.57l.03-.238a.75.75 0 0 1 .585-.758l1.455-.242a.75.75 0 0 1 .555.352c.28.47.168 1.053-.314 1.343l-1.42 1.42a.75.75 0 0 1-.53.22h-1.486c-.521 0-.96.386-1.043.918l-.206 1.305c-.075.474.072.969.419 1.344l.87.87a.75.75 0 0 1 0 1.06l-.75.75Z" clip-rule="evenodd" />
+                        <path d="M16.5 6a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM18 9c-.535 0-.968-.42-.968-.962 0-.54.433-.967.968-.967.536 0 .969.427.969.967 0 .542-.433.968-.969.968Zm-.75 2.25c.01-.001.02-.001.03-.001H15.19c-.381 0-.693.31-.693.692v1.392c0 .382.312.693.693.693h2.09c.381 0 .693-.311.693-.693V12.91a.75.75 0 0 0-.275-.57l-1.082-.871Z" />
+                        <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v.75A2.25 2.25 0 0 0 18.75 5h-15a2.25 2.25 0 0 0-2.25 2.25V6Zm0 7.5A2.25 2.25 0 0 1 5.25 12h15.5a.75.75 0 0 1 0 1.5H5.25a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                    </svg>
+                    <h3 class="font-semibold text-lg text-texto-claro mt-2">Leia a Reportagem</h3>
+                    <p class="text-sm text-gray-400">Confira o panorama da judicialização, nas eleições de 2020, 2022 e 2024, em Santa Catarina.</p>
+                </a>
 
-            <!-- Seção 1: Principais Pontos do Documentário -->
-            <h2 class="text-3xl font-bold text-trigo mb-4 mt-8 font-serif">A Estrutura de Recomendação</h2>
-            <p class="mb-6 text-gray-300">
-                O documentário foca em três pilares do algoritmo: a similaridade de conteúdo, a popularidade e a atenção (o tempo que você passa assistindo). A combinação desses fatores cria um sistema que é brilhante em manter você engajado, mas falha miseravelmente em apresentar uma visão de mundo completa e isenta. A seguir, a transcrição de trechos-chave do nosso documentário.
-            </p>
+                <a href="materia-reels.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
+                        <path d="M20 4.5h-2c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V6.5c0-1.1-.9-2-2-2zm-9 0H9c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V6.5c0-1.1-.9-2-2-2zM4 6.5c0-1.1.9-2 2-2h.5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6.5z"/>
+                    </svg>
+                    <h3 class="font-semibold text-lg text-texto-claro mt-2">Reels</h3>
+                    <p class="text-sm text-gray-400">Em poucos segundos a gente te explica como funciona o sistema eleitoral brasileiro.</p>
+                </a>
 
-            <!-- Transcrição de Trecho -->
-            <div class="bg-dark-box p-4 rounded-lg border-l-4 border-gray-600 my-6">
-                <p class="text-sm font-medium text-trigo mb-2">Transcrição (Minuto 04:15)</p>
-                <p class="text-gray-300 italic">
-                    <span class="font-bold">Narrador:</span> "Quando dizemos que a máquina está aprendendo, estamos, na verdade, dizendo que ela está se tornando extremamente boa em prever o seu próximo clique. A otimização não é pela felicidade ou pela verdade, é pela permanência. E é aí que o perigo reside."
-                </p>
+                <a href="materia-audio.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
+                        <path d="M12 2c2.76 0 5 2.24 5 5v5c0 2.76-2.24 5-5 5s-5-2.24-5-5V7c0-2.76 2.24-5 5-5zM19 12h-2c0 3.12-2.5 5.7-5.6 6.13V21h-3.8v-2.87C7.5 17.7 5 15.12 5 12H3c0 3.53 2.61 6.44 6 7.15V22h6v-2.85c3.39-.71 6-3.62 6-7.15z"/>
+                    </svg>
+                    <h3 class="font-semibold text-lg text-texto-claro mt-2">Reportagem em Áudio</h3>
+                    <p class="text-sm text-gray-400"> Especialistas comentam os caminhos para melhorar a situação.</p>
+                </a>
             </div>
-
-            <!-- Seção 2: Entrevistas Chave -->
-            <h2 class="text-3xl font-bold text-trigo mb-4 mt-8 font-serif">As Entrevistas Chave</h2>
-            <p class="mb-6 text-gray-300">
-                Trazemos especialistas em ciência de dados e ex-funcionários de grandes plataformas para expor as prioridades corporativas que moldam o algoritmo. O consenso é alarmante: a escala em que as plataformas operam tornou inviável a moderação ética, deixando o 'engajamento' como o único e real juiz do que se torna viral.
-            </p>
-            
-        </article>
-
+        </div>
     </main>
 
-    <!-- FOOTER (Reutilizado) -->
     <footer class="bg-dark-box border-t border-gray-700 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
             <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
@@ -157,8 +161,4 @@
         </div>
     </footer>
 </body>
-
 </html>
-
-
-
