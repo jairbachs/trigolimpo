@@ -6,7 +6,6 @@
     <title>Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CONFIGURAÇÕES DO TAILWIND (MANTIDAS) */
         tailwind.config = {
             theme: {
                 extend: {
@@ -24,14 +23,12 @@
             }
         }
         
-        /* Define o fundo principal e a cor do texto padrão */
         body {
             background-color: #2B2B2B; 
             color: #f8fafc;          
             font-family: 'Inter', sans-serif;
         }
 
-        /* Estilo para o container de vídeo responsivo (aspect-ratio 16:9) */
         .video-container-wrapper {
             position: relative;
             width: 100%;
@@ -48,9 +45,7 @@
             height: 100%;
         }
 
-        /* AJUSTES ESSENCIAIS PARA O REELS (ESTEIRA E MINIATURA) */
 
-        /* 1. Esconde o scroll padrão e permite que o JS o controle */
         .reels-container {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
@@ -60,14 +55,12 @@
             display: none; /* Chrome, Safari and Opera */
         }
         
-        /* 2. Define a altura e largura FIXAS e iguais para o card (QUADRADO) */
         .reel-card {
             position: relative; /* Essencial para posicionar o título de forma absoluta */
             width: 192px;  /* 12rem = 192px */
             height: 192px; /* 12rem = 192px */
         }
         
-        /* 3. Garante que a imagem ocupe 100% da altura do card */
         .reel-thumbnail-placeholder {
             height: 100%; 
             background-size: cover; 
@@ -79,7 +72,6 @@
             position: relative;
         }
 
-        /* 4. Overlay Escuro */
         .reel-thumbnail-placeholder::after {
             content: '';
             position: absolute;
@@ -94,14 +86,13 @@
              background: rgba(0, 0, 0, 0.75); /* Escurece mais no hover */
         }
 
-        /* 5. Estilo para a caixa de título (tooltip) */
         .reel-title-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
             padding: 8px;
-            /* Inicia transparente e fora da vista */
+
             transform: translateY(100%); 
             opacity: 0;
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
@@ -111,9 +102,8 @@
             border-bottom-right-radius: 0.75rem;
         }
 
-        /* 6. Efeito de Hover - Mostra o título */
         .reel-card:hover .reel-title-overlay {
-            transform: translateY(0); /* Desliza para cima */
+            transform: translateY(0);
             opacity: 1;
         }
         
@@ -229,13 +219,9 @@
 
     <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político</p>
             <div class="space-x-4 text-xs">
-                <a href="#" class="hover:text-trigo">Termos de Uso</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+                <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
             </div>
         </div>
     </footer>
@@ -255,7 +241,6 @@
 
     const reelsContainer = document.getElementById('reels-list');
     
-    // Dimensões dos cards para o cálculo da rolagem
     const cardSize = 192; 
     const cardSpacing = 24; 
     const stepSize = cardSize + cardSpacing; 
@@ -297,7 +282,6 @@
         startAutoScroll();
     }
 
-    // LÓGICA DO CARROSSEL DE ESTEIRA
     function scrollNext() {
         const numOriginalItems = reelsData.length / 2;
         const totalContentWidth = numOriginalItems * stepSize;
@@ -318,16 +302,13 @@
     }
 
     function startAutoScroll() {
-        // Rola a cada 3 segundos
         autoScrollInterval = setInterval(scrollNext, 3000);
 
-        // Pausa a rolagem ao passar o mouse
         reelsContainer.addEventListener('mouseenter', () => {
             clearInterval(autoScrollInterval);
             autoScrollInterval = null;
         });
 
-        // Retoma a rolagem ao tirar o mouse
         reelsContainer.addEventListener('mouseleave', () => {
             if (!autoScrollInterval) { 
                 autoScrollInterval = setInterval(scrollNext, 3000);
@@ -335,11 +316,7 @@
         });
     }
 
-    // Inicializa a renderização
     renderReels();
 </script>
 </body>
 </html>
-
-
-
