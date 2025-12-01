@@ -3,62 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vídeo: Decifrando o Algoritmo | Trigo Limpo</title>
+    <title>Vídeo: Reportagem em vídeo | Trigo Limpo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Configurações customizadas do Tailwind: Cores Dark Mode e Destaque 'Trigo' */
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Georgia', 'Times New Roman', 'serif'], /* Fonte serif para o corpo do texto */
+                        serif: ['Georgia', 'Times New Roman', 'serif'],
                     },
                     colors: {
-                        /* NOVAS CORES */
-                        'dark-fundo': '#2B2B2B', /* NOVO: Fundo principal */
-                        'dark-box': '#3A3A3A',  /* NOVO: Fundo dos cards/players (mais claro que o fundo) */
-                        'trigo': '#FFD700',     /* NOVO: Amarelo Dourado para Destaque */
-                        'texto-claro': '#E0E0E0', /* NOVO: Texto principal (Títulos) */
+                        'dark-fundo': '#2B2B2B', 
+                        'dark-box': '#3A3A3A',  
+                        'trigo': '#FFD700',  
+                        'texto-claro': '#E0E0E0',
                     }
                 }
             }
         }
         
-        /* Define o fundo principal e a cor do texto padrão */
         body {
             background-color: #2B2B2B; /* dark-fundo */
             color: #E0E0E0; /* texto-claro */
             font-family: 'Inter', sans-serif;
-            padding-top: 64px; /* Adiciona padding para evitar que o conteúdo fique atrás do header fixo */
         }
 
-        /* Estilo para o corpo do artigo - usando fonte Serif para leitura */
         .article-body p, .article-body li {
             font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem; /* Um pouco maior para conforto */
+            font-size: 1.1rem; 
             line-height: 1.8;
-            color: #C0C0C0; /* Cor de texto mais suave para o corpo */
+            color: #C0C0C0; 
         }
         .article-body h2 {
             font-family: 'Inter', sans-serif;
         }
 
-        /* Estilo para o parágrafo introdutório (lead) */
         .lead {
             font-size: 1.5rem; /* text-2xl */
             line-height: 2rem; /* leading-8 */
-            color: #E0E0E0; /* Usa a cor texto-claro */
+            color: #E0E0E0; 
             font-style: italic;
         }
 
-        /* Estilo para o Player de Vídeo Responsivo (16:9) */
         .video-container {
             position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 * 100) */
+            padding-top: 56.25%; 
             height: 0;
             overflow: hidden;
-            border-radius: 1rem; /* rounded-xl */
+            border-radius: 1rem; 
         }
         .video-container iframe,
         .video-container .video-placeholder {
@@ -69,19 +62,18 @@
             height: 100%;
         }
         .video-container .video-placeholder {
-            /* Estilo para o placeholder/simulação de vídeo */
-            background-color: #3A3A3A; /* dark-box */
+            background-color: #3A3A3A; 
             cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 left-0 w-full bg-dark-box border-b border-gray-700 z-50 shadow-lg">
+    <header class="top-0 left-0 w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             
             <div class="flex items-center space-x-2">
-                <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
+                <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2"> 
                 <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
                     TRIGO <span class="text-trigo">LIMPO</span>
                 </a>
@@ -110,7 +102,6 @@
             <div class="video-container shadow-2xl">
                 <div class="video-placeholder flex items-center justify-center bg-dark-box">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <p class="absolute text-xl font-semibold opacity-80">Documentário Placeholder</p>
                 </div>
             </div>
 
@@ -148,15 +139,11 @@
         </div>
     </main>
 
-    <footer class="bg-dark-box border-t border-gray-700 mt-12 py-8">
+    <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
             <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
             <div class="space-x-4 text-xs">
-                <a href="#" class="hover:text-trigo">Termos de Uso</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+                <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
             </div>
         </div>
     </footer>
