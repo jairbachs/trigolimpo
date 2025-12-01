@@ -24,34 +24,32 @@
         }
         
         body {
-            background-color: #2B2B2B; /* dark-fundo */
-            color: #E0E0E0; /* texto-claro */
+            background-color: #2B2B2B;
+            color: #E0E0E0;
             font-family: 'Inter', sans-serif;
         }
 
         .article-body p, .article-body li {
             font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem;  
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: #C0C0C0;  
-        }
-        .article-body h2 {
-            font-family: 'Inter', sans-serif;
+            color: #C0C0C0;
         }
 
         .lead {
-            font-size: 1.5rem; /* text-2xl */
-            line-height: 2rem; /* leading-8 */
-            color: #E0E0E0;  
+            font-size: 1.5rem;
+            line-height: 2rem;
+            color: #E0E0E0;
             font-style: italic;
         }
 
+        /* --- VIDEO PLAYER --- */
         .video-container {
             position: relative;
-            padding-top: 56.25%; /* Proporção 16:9 */ 
+            padding-top: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 1rem;  
+            border-radius: 1rem;
         }
         .video-container iframe,
         .video-container .video-placeholder {
@@ -62,60 +60,64 @@
             height: 100%;
         }
         .video-container .video-placeholder {
-            background-color: #3A3A3A;  
+            background-color: #3A3A3A;
             cursor: pointer;
-            background-image: url('https://placehold.co/1200x675/3A3A3A/FFD700?text=CLIQUE+PARA+VER');
             background-size: cover;
             background-position: center;
         }
     </style>
 </head>
+
 <body>
 
-    <header class="top-0 left-0 w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            
-            <div class="flex items-center space-x-2">
-                <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2"> 
-                <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
-                    TRIGO <span class="text-trigo">LIMPO</span>
-                </a>
-            </div>
-
-            <nav class="flex space-x-4 text-sm font-medium">
-                <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
-                <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
-                <a href="materia-texto.html" class="text-gray-300 hover:text-trigo transition duration-150">Reportagem</a>
-                <a href="materia-video.html" class="text-trigo border-b-2 border-trigo pb-1">Vídeo</a>
-                <a href="materia-audio.html" class="text-gray-300 hover:text-trigo transition duration-150">Áudio</a>
-            </nav>
+<header class="top-0 left-0 w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        
+        <div class="flex items-center space-x-2">
+            <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2"> 
+            <a href="index.html" class="text-xl font-bold font-serif tracking-tight text-texto-claro">
+                TRIGO <span class="text-trigo">LIMPO</span>
+            </a>
         </div>
+
+        <nav class="flex space-x-4 text-sm font-medium">
+            <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
+            <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
+            <a href="materia-texto.html" class="text-gray-300 hover:text-trigo transition duration-150">Reportagem</a>
+            <a href="materia-video.html" class="text-trigo border-b-2 border-trigo pb-1">Vídeo</a>
+            <a href="materia-audio.html" class="text-gray-300 hover:text-trigo transition duration-150">Áudio</a>
+        </nav>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 mt-12"> 
+    
+    <header class="text-center mb-10 pt-10">
+        <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Reportagem em vídeo</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
+            Com ações pendentes, candidatos se beneficiam da morosidade e cumprem mandatos inteiros.
+        </h1>           
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 mt-12"> 
-        
-        <header class="text-center mb-10 pt-10">
-            <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Reportagem em vídeo</p>
-            <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
-                Com ações pendentes, candidatos se beneficiam da morosidade e cumprem mandatos inteiros.
-            </h1>           
-        </header>
-
-        <div class="max-w-5xl mx-auto mb-10">
-            <div id="videoContainer" class="video-container shadow-2xl">
+    <div class="max-w-5xl mx-auto mb-10">
+        <div id="videoContainer" class="video-container shadow-2xl">
+            
+            <div id="videoPlaceholder" 
+                 onclick="loadVideo('uLoqK6bG3K4', 'videoContainer', 'videoPlaceholder')"
+                 class="video-placeholder flex items-center justify-center relative transition duration-300 hover:opacity-90">
                 
-                <div id="videoPlaceholder" 
-                     onclick="loadVideo('uLoqK6bG3K4', 'videoContainer', 'videoPlaceholder')"
-                     class="video-placeholder flex items-center justify-center relative transition duration-300 hover:opacity-90">
-                    
-                    <div class="absolute inset-0 bg-black/30"></div> 
-                     
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo transition transform hover:scale-110 relative z-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+                <div class="absolute inset-0 bg-black/30"></div> 
+                 
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo transition transform hover:scale-110 relative z-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             </div>
         </div>
-        
-        <div class="mt-12">
+    </div>
+
+    <!-- resto da página permanece inalterado -->
+
+</main>
+
+<div class="mt-12">
             <h2 class="font-sans text-2xl font-bold text-trigo mb-6 text-center">Navegue pela Reportagem</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
@@ -146,37 +148,43 @@
                 </a>
             </div>
         </div>
-    </main>
-
-    <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
-            <div class="space-x-4 text-xs">
-                <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
-            </div>
+<footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+        <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+        <div class="space-x-4 text-xs">
+            <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-        function loadVideo(videoId, containerId, placeholderId) {
-            const container = document.getElementById(containerId);
-            const placeholder = document.getElementById(placeholderId);
+<script>
 
-            if (container && placeholder) {
-                const iframe = document.createElement('iframe');
-                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
-                iframe.setAttribute('frameborder', '0');
-                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-                iframe.setAttribute('allowfullscreen', 'true');
-                iframe.setAttribute('title', 'Documentário em vídeo');
-                
-                container.appendChild(iframe);
+    /* ---- (1) DEFINIR THUMBNAIL AUTOMÁTICA ---- */
+    document.addEventListener("DOMContentLoaded", () => {
+        const thumb = document.getElementById("videoPlaceholder");
+        const VIDEO_ID = "uLoqK6bG3K4";
 
-                container.removeChild(placeholder);
-            } else {
-                console.error('Um ou ambos os elementos (container ou placeholder) não foram encontrados.');
-            }
+        thumb.style.backgroundImage =
+            `url('https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg')`;
+    });
+
+    /* ---- (2) FUNÇÃO DE REPRODUZIR O VÍDEO ---- */
+    function loadVideo(videoId, containerId, placeholderId) {
+        const container = document.getElementById(containerId);
+        const placeholder = document.getElementById(placeholderId);
+
+        if (container && placeholder) {
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', 'true');
+
+            container.appendChild(iframe);
+            container.removeChild(placeholder);
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
