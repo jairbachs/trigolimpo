@@ -7,60 +7,54 @@
     <!-- Carrega o Tailwind CSS para estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Configurações customizadas do Tailwind: Cores Dark Mode e Destaque 'Trigo' */
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Georgia', 'Times New Roman', 'serif'], /* Fonte serif para o corpo do texto */
+                        serif: ['Georgia', 'Times New Roman', 'serif'],
                     },
                     colors: {
-                        /* NOVAS CORES */
-                        'dark-fundo': '#2B2B2B', /* Fundo principal */
-                        'dark-box': '#3A3A3A',  /* Fundo dos cards/players (mais claro que o fundo) */
-                        'trigo': '#FFD700',     /* Amarelo Dourado para Destaque */
-                        'texto-claro': '#E0E0E0', /* Texto principal (Títulos) */
+
+                        'dark-fundo': '#2B2B2B', 
+                        'dark-box': '#3A3A3A',  
+                        'trigo': '#FFD700',    
+                        'texto-claro': '#E0E0E0', 
                     }
                 }
             }
         }
         
-        /* Define o fundo principal e a cor do texto padrão */
+
         body {
-            background-color: #2B2B2B; /* dark-fundo */
-            color: #E0E0E0; /* texto-claro */
+            background-color: #2B2B2B; 
+            color: #E0E0E0; 
             font-family: 'Inter', sans-serif;
-            padding-top: 64px; /* Adiciona padding para evitar que o conteúdo fique atrás do header fixo */
         }
 
-        /* Estilo para o corpo do artigo - usando fonte Serif para leitura */
         .article-body p, .article-body li {
             font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem; /* Um pouco maior para conforto */
+            font-size: 1.1rem; 
             line-height: 1.8;
-            color: #C0C0C0; /* Cor de texto mais suave para o corpo */
+            color: #C0C0C0; 
         }
         .article-body h2 {
             font-family: 'Inter', sans-serif;
         }
 
-        /* Estilo para o parágrafo introdutório (lead) */
         .lead {
-            font-size: 1.5rem; /* text-2xl */
-            line-height: 2rem; /* leading-8 */
-            color: #E0E0E0; /* Usa a cor texto-claro */
+            font-size: 1.5rem; 
+            line-height: 2rem; 
+            color: #E0E0E0; 
             font-style: italic;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER (Fixo e Responsivo) -->
-    <header class="fixed top-0 left-0 w-full bg-dark-box border-b border-gray-700 z-50 shadow-lg">
+    <header class="top-0 left-0 w-full bg-dark-box border-b border-gray-500 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             
-            <!-- Logotipo "TRIGO LIMPO" -->
             <div class="flex items-center space-x-2">
                 <img src="trigo.png" alt="Logotipo Trigo Limpo" class="w-8 h-8 mr-2">
                 <!-- Ícone do logotipo original foi removido para evitar tags não fechadas -->
@@ -69,7 +63,6 @@
                 </a>
             </div>
 
-            <!-- Navegação -->
             <nav class="flex space-x-4 text-sm font-medium">
                 <a href="index.html" class="text-gray-300 hover:text-trigo transition duration-150">Início</a>
                 <a href="materia-reels.html" class="text-gray-300 hover:text-trigo transition duration-150">Reels</a>
@@ -80,10 +73,8 @@
         </div>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL DO PODCAST -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
         
-        <!-- TÍTULO E METADADOS -->
         <header class="text-center mb-10 pt-10">
             <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Reportagem em áudio</p>
             <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
@@ -91,14 +82,11 @@
             </h1>
         </header>
 
-        <!-- PLAYER DE ÁUDIO E INFORMAÇÕES -->
         <div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-8">
             
-            <!-- Player de Áudio (Coluna Principal) -->
             <div class="lg:w-2/3 audio-player-card p-6 rounded-3xl bg-dark-box border-2 border-gray-700 shadow-xl">
                 
                 <div class="flex items-center space-x-4 mb-4">
-                    <!-- Placeholder de Imagem para Capa do Podcast -->
                     <img src="https://placehold.co/100x100/f59e0b/0f172a?text=POD" alt="Capa do Podcast" class="w-24 h-24 rounded-xl object-cover border-4 border-trigo">
                     <div>
                         <p class="text-sm text-gray-400">Trigo Limpo Podcast</p>
@@ -107,7 +95,6 @@
                     </div>
                 </div>
 
-                <!-- Simulação de Player (Barra de Progresso) -->
                 <div class="w-full bg-gray-600 h-2 rounded-full mb-3 relative">
                     <div class="bg-trigo h-2 rounded-full" style="width: 45%;"></div>
                     <div class="absolute top-1/2 -mt-2 -ml-2 w-4 h-4 bg-trigo rounded-full shadow-lg border-2 border-dark-box" style="left: 45%;"></div>
@@ -118,24 +105,19 @@
                     <span>42:15</span>
                 </div>
 
-                <!-- Controles do Player -->
                 <div class="flex justify-center items-center space-x-6 text-trigo">
-                    <!-- Ícone de Rewind 15s -->
                     <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18V6l10 6-10 6z" transform="translate(4 0)"/></svg>
                     </button>
-                    <!-- Ícone de Play (Destaque) -->
                     <button class="p-4 bg-trigo text-dark-fundo rounded-full shadow-xl hover:bg-yellow-600 transition duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     </button>
-                    <!-- Ícone de Forward 15s -->
                     <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M18 6v12H8V6h10z" transform="translate(-4 0) rotate(180 12 12)"/></svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Detalhes do Episódio (Coluna Lateral) -->
             <aside class="lg:w-1/3 p-6 rounded-3xl bg-dark-box border border-gray-700 shadow-xl h-fit">
                 <h3 class="text-xl font-bold text-trigo mb-3">O que você vai ouvir:</h3>
                 <ul class="space-y-3 text-gray-300 text-sm">
@@ -164,12 +146,10 @@
 
         <hr class="border-t border-gray-700 my-10 max-w-4xl mx-auto">
 
-        <!-- CTAs para Outras Páginas (COM ÍCONES REVISADOS) -->
         <div class="mt-12 pt-8">
             <h2 class="font-sans text-2xl font-bold text-trigo mb-6 text-center">Navegue por Outros Formatos</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
-                <!-- CTA 1: Reportagem Completa (ÍCONE DE LIVRO/TEXTO) -->
                 <a href="materia-texto.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
                         <path fill-rule="evenodd" d="M11.54 22.351A.75.75 0 0 1 12 22.5c.379 0 .752-.164 1.018-.476l.243-.289a4.5 4.5 0 0 0 2.214-4.872l-.128-1.037a.75.75 0 0 1 .128-.535l1.638-1.639c.07-.07.126-.155.161-.252a1.986 1.986 0 0 0 .193-.57l.03-.238a.75.75 0 0 1 .585-.758l1.455-.242a.75.75 0 0 1 .555.352c.28.47.168 1.053-.314 1.343l-1.42 1.42a.75.75 0 0 1-.53.22h-1.486c-.521 0-.96.386-1.043.918l-.206 1.305c-.075.474.072.969.419 1.344l.87.87a.75.75 0 0 1 0 1.06l-.75.75Z" clip-rule="evenodd" />
@@ -180,7 +160,6 @@
                     <p class="text-sm text-gray-400">Confira o panorama da judicialização, nas eleições de 2020, 2022 e 2024, em Santa Catarina.</p>
                 </a>
 
-                <!-- CTA 2: Reels (ÍCONE DE CÂMERA DE VÍDEO CURTO) -->
                 <a href="materia-reels.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
                         <path d="M20 4.5h-2c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V6.5c0-1.1-.9-2-2-2zm-9 0H9c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V6.5c0-1.1-.9-2-2-2zM4 6.5c0-1.1.9-2 2-2h.5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6.5z"/>
@@ -189,7 +168,6 @@
                     <p class="text-sm text-gray-400">Em poucos segundos a gente te explica como funciona o sistema eleitoral brasileiro.</p>
                 </a>
 
-                <!-- CTA 3: Vídeo (ÍCONE DE PLAY/VÍDEO) -->
                 <a href="materia-video.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
                         <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.342 2.706-1.656l11.54 6.348c1.17 0.643 1.17 2.313 0 2.956l-11.54 6.348c-1.177 0.686-2.706-0.229-2.706-1.656V5.653Z" clip-rule="evenodd" />
@@ -201,17 +179,13 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-dark-box border-t border-gray-700 mt-12 py-8">
+    <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político</p>
             <div class="space-x-4 text-xs">
-                <a href="#" class="hover:text-trigo">Termos de Uso</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Política de Privacidade</a>
-                <span class="text-trigo">|</span>
-                <a href="#" class="hover:text-trigo">Fale Conosco</a>
+                <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
             </div>
+        </div>
         </div>
     </footer>
 </body>
