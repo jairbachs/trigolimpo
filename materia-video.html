@@ -14,9 +14,9 @@
                         serif: ['Georgia', 'Times New Roman', 'serif'],
                     },
                     colors: {
-                        'dark-fundo': '#2B2B2B', 
-                        'dark-box': '#3A3A3A',  
-                        'trigo': '#FFD700',  
+                        'dark-fundo': '#2B2B2B',  
+                        'dark-box': '#3A3A3A',    
+                        'trigo': '#FFD700',      
                         'texto-claro': '#E0E0E0',
                     }
                 }
@@ -31,9 +31,9 @@
 
         .article-body p, .article-body li {
             font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem; 
+            font-size: 1.1rem;  
             line-height: 1.8;
-            color: #C0C0C0; 
+            color: #C0C0C0;  
         }
         .article-body h2 {
             font-family: 'Inter', sans-serif;
@@ -42,16 +42,16 @@
         .lead {
             font-size: 1.5rem; /* text-2xl */
             line-height: 2rem; /* leading-8 */
-            color: #E0E0E0; 
+            color: #E0E0E0;  
             font-style: italic;
         }
 
         .video-container {
             position: relative;
-            padding-top: 56.25%; 
+            padding-top: 56.25%; /* Proporção 16:9 */ 
             height: 0;
             overflow: hidden;
-            border-radius: 1rem; 
+            border-radius: 1rem;  
         }
         .video-container iframe,
         .video-container .video-placeholder {
@@ -62,8 +62,11 @@
             height: 100%;
         }
         .video-container .video-placeholder {
-            background-color: #3A3A3A; 
+            background-color: #3A3A3A;  
             cursor: pointer;
+            background-image: url('https://placehold.co/1200x675/3A3A3A/FFD700?text=CLIQUE+PARA+VER');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
@@ -99,13 +102,19 @@
         </header>
 
         <div class="max-w-5xl mx-auto mb-10">
-            <div class="video-container shadow-2xl">
-                <div class="video-placeholder flex items-center justify-center bg-dark-box">
-                    <svg xmlns="https://www.youtube.com/watch?v=uLoqK6bG3K4" class="w-20 h-20 text-trigo/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <div id="videoContainer" class="video-container shadow-2xl">
+                
+                <div id="videoPlaceholder" 
+                     onclick="loadVideo('uLoqK6bG3K4', 'videoContainer', 'videoPlaceholder')"
+                     class="video-placeholder flex items-center justify-center relative transition duration-300 hover:opacity-90">
+                    
+                    <div class="absolute inset-0 bg-black/30"></div> 
+                     
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-trigo transition transform hover:scale-110 relative z-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 </div>
             </div>
-
         </div>
+        
         <div class="mt-12">
             <h2 class="font-sans text-2xl font-bold text-trigo mb-6 text-center">Navegue pela Reportagem</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -147,6 +156,27 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function loadVideo(videoId, containerId, placeholderId) {
+            const container = document.getElementById(containerId);
+            const placeholder = document.getElementById(placeholderId);
+
+            if (container && placeholder) {
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('title', 'Documentário em vídeo');
+                
+                container.appendChild(iframe);
+
+                container.removeChild(placeholder);
+            } else {
+                console.error('Um ou ambos os elementos (container ou placeholder) não foram encontrados.');
+            }
+        }
+    </script>
 </body>
 </html>
-
