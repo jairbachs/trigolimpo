@@ -6,7 +6,6 @@
     <title>Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CONFIGURAÇÕES DO TAILWIND (MANTIDAS) */
         tailwind.config = {
             theme: {
                 extend: {
@@ -24,7 +23,6 @@
             }
         }
         
-        /* Define o fundo principal e a cor do texto padrão */
         body {
             background-color: #2B2B2B; 
             color: #f8fafc; 
@@ -94,8 +92,6 @@
 
        <div id="reels-track" class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory scrollbar-none w-full px-2 py-4" style="scroll-behavior:smooth;">
 
-        <!-- Slides-->
-        <!-- ---------- SLIDE 1 ----------- -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="0">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -113,7 +109,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 2 -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="1">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -126,7 +121,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 3 -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="2">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -139,7 +133,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 4 -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="3">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -152,7 +145,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 5 -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="4">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -165,7 +157,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 6 -->
         <div class="snap-center flex-shrink-0 w-full flex justify-center px-4 slide" data-index="5">
           <div class="reel-container">
             <div class="reel-video-placeholder">
@@ -201,6 +192,9 @@
 <footer class="bg-dark-box border-t border-gray-500 mt-12 py-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
     <p class="mb-4 text-sm">&copy; 2025 Trigo Limpo - Reportagem Multimídia de Jornalismo Político.</p>
+            <div class="space-x-4 text-xs">
+                <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
+            </div>
   </div>
 </footer>
 
@@ -244,7 +238,6 @@
     if(e.key === 'ArrowRight') right && right.click();
   });
 
-  // YT API
   const players = [];
 
   (function loadYT(){
@@ -276,7 +269,6 @@
             event.target.getIframe().style.height = '100%';
           },
 
-          // ⭐ AVANÇO AUTOMÁTICO QUANDO O VÍDEO ACABA ⭐
           onStateChange: (e)=>{
             if (e.data === YT.PlayerState.ENDED) {
               const idx = slides.findIndex(s => s.contains(e.target.getIframe()));
