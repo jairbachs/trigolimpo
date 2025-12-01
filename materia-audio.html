@@ -14,39 +14,84 @@
                         serif: ['Georgia', 'Times New Roman', 'serif'],
                     },
                     colors: {
-
-                        'dark-fundo': '#2B2B2B', 
-                        'dark-box': '#3A3A3A',  
-                        'trigo': '#FFD700',    
-                        'texto-claro': '#E0E0E0', 
+                        'dark-fundo': '#2B2B2B',
+                        'dark-box': '#3A3A3A',
+                        'trigo': '#FFD700',
+                        'texto-claro': '#E0E0E0',
                     }
                 }
             }
         }
-        
 
         body {
-            background-color: #2B2B2B; 
-            color: #E0E0E0; 
+            background-color: #2B2B2B;
+            color: #E0E0E0;
             font-family: 'Inter', sans-serif;
         }
 
         .article-body p, .article-body li {
             font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: #C0C0C0; 
+            color: #C0C0C0;
         }
         .article-body h2 {
             font-family: 'Inter', sans-serif;
         }
 
         .lead {
-            font-size: 1.5rem; 
-            line-height: 2rem; 
-            color: #E0E0E0; 
+            font-size: 1.5rem;
+            line-height: 2rem;
+            color: #E0E0E0;
             font-style: italic;
         }
+
+     
+        #progressBar {
+            /* Zera a aparência padrão do navegador */
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent; /* Remove o fundo nativo */
+            cursor: pointer;
+            height: 8px;
+            width: 100%;
+        }
+
+        #progressBar::-webkit-slider-runnable-track {
+            background: #4B4B4B; /* Um cinza mais escuro que a barra que não foi preenchida */
+            border-radius: 4px;
+            height: 8px;
+        }
+
+        /* O preenchimento é controlado pelo 'accent-color' no Chromium/Webkit, mas a trilha precisa ser configurada */
+        /* No Firefox, precisamos de um truque extra, mas o styling base já ajuda */
+        #progressBar::-moz-range-track {
+            background: #4B4B4B;
+            border-radius: 4px;
+            height: 8px;
+        }
+
+        #progressBar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -4px; /* Centraliza o indicador na trilha de 8px */
+            background-color: #FFD700; /* Trigo Amarelo */
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+            transition: background-color 0.15s ease-in-out;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Sombra para destaque */
+        }
+        #progressBar::-moz-range-thumb {
+            background-color: #FFD700;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            border: 0;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
     </style>
 </head>
 <body>
@@ -76,7 +121,7 @@
         <header class="text-center mb-10 pt-10">
             <p class="text-trigo text-sm font-semibold uppercase tracking-widest mb-2">Reportagem em áudio</p>
             <h1 class="font-sans text-4xl md:text-5xl font-extrabold leading-tight text-texto-claro">
-                Regulamentação e Transparência: Como Controlar o Incontrolável?
+                Há ações para melhorar o cenário da judicialização das eleições brasileiras?
             </h1>
         </header>
 
@@ -84,63 +129,54 @@
             
             <div class="lg:w-2/3 audio-player-card p-6 rounded-3xl bg-dark-box border-2 border-gray-700 shadow-xl">
                 
-                <div class="flex items-center space-x-4 mb-4">
-                    <img src="https://placehold.co/100x100/f59e0b/0f172a?text=POD" alt="Capa do Podcast" class="w-24 h-24 rounded-xl object-cover border-4 border-trigo">
+                <div class="flex items-center space-x-4 mb-6">
+                    <img src="capa_audio.png" alt="Capa do Podcast" class="w-24 h-24 rounded-xl object-cover border-4 border-trigo">
                     <div>
-                        <p class="text-sm text-gray-400">Trigo Limpo Podcast</p>
-                        <h2 class="text-xl font-bold text-texto-claro">Como Controlar o Incontrolável?</h2>
-                        <p class="text-sm text-gray-500">Com Ana Souza e Pedro Lima</p>
+                        <p class="text-sm text-gray-400">Trigo Limpo</p>
+                        <h2 class="text-xl font-bold text-texto-claro">O que pode ser feito?</h2>
+                        <p class="text-sm text-gray-500">Com Ana Rodrigues</p>
                     </div>
                 </div>
 
-                <div class="w-full bg-gray-600 h-2 rounded-full mb-3 relative">
-                    <div class="bg-trigo h-2 rounded-full" style="width: 45%;"></div>
-                    <div class="absolute top-1/2 -mt-2 -ml-2 w-4 h-4 bg-trigo rounded-full shadow-lg border-2 border-dark-box" style="left: 45%;"></div>
-                </div>
-                
-                <div class="flex justify-between items-center text-sm text-gray-400 mb-4">
-                    <span>18:55</span>
-                    <span>42:15</span>
+                <div class="flex items-center gap-4 my-6">
+                    <button id="playPause"
+                        class="text-4xl p-2 rounded-full text-trigo transition select-none hover:bg-white/10 active:bg-white/20">
+                        <!-- Ícone inicial de Play (substitui o emoji ▶️) -->
+                        <svg id="playIcon" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.25 5.653c0-1.427 1.529-2.342 2.706-1.656l11.54 6.348c1.17 0.643 1.17 2.313 0 2.956l-11.54 6.348c-1.177 0.686-2.706-0.229-2.706-1.656V5.653Z" clip-rule="evenodd" fill-rule="evenodd"/>
+                        </svg>
+                        <!-- Ícone de Pause (escondido inicialmente) -->
+                        <svg id="pauseIcon" class="w-8 h-8 hidden" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5.25A.75.75 0 0 1 6.75 6v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm11.25.75a.75.75 0 0 0-1.5 0v12a.75.75 0 0 0 1.5 0V6Z" />
+                        </svg>
+                    </button>
+
+                    <span id="currentTime" class="text-lg font-bold text-texto-claro w-12 hidden">00:00</span>
+
+                    <audio id="audioPlayer" src="reportagem.mp3"></audio>
                 </div>
 
-                <div class="flex justify-center items-center space-x-6 text-trigo">
-                    <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18V6l10 6-10 6z" transform="translate(4 0)"/></svg>
-                    </button>
-                    <button class="p-4 bg-trigo text-dark-fundo rounded-full shadow-xl hover:bg-yellow-600 transition duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
-                    <button class="p-2 hover:bg-dark-fundo/50 rounded-full transition duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M18 6v12H8V6h10z" transform="translate(-4 0) rotate(180 12 12)"/></svg>
-                    </button>
+                <input id="progressBar" type="range" min="0" max="100" value="0"
+                        class="w-full h-2 bg-gray-600 rounded-lg cursor-pointer accent-trigo">
+
+                <div class="flex justify-between text-gray-400 text-sm mt-2">
+                    <span id="currentDisplay">00:00</span>
+                    <span id="durationDisplay">00:00</span>
                 </div>
+
             </div>
 
             <aside class="lg:w-1/3 p-6 rounded-3xl bg-dark-box border border-gray-700 shadow-xl h-fit">
                 <h3 class="text-xl font-bold text-trigo mb-3">O que você vai ouvir:</h3>
-                <ul class="space-y-3 text-gray-300 text-sm">
-                    <li class="flex items-start">
-                        <span class="text-trigo mr-2 font-bold flex-none">0:00</span> Introdução: Ameaça vs. Inovação.
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-trigo mr-2 font-bold flex-none">05:30</span> Entrevista: O Novo Marco Legal da IA.
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-trigo mr-2 font-bold flex-none">15:40</span> Case Study: Algoritmos de Crédito e Vieses.
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-trigo mr-2 font-bold flex-none">28:00</span> O Debate Global: EUA vs. União Europeia.
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-trigo mr-2 font-bold flex-none">38:15</span> Conclusão e Próximos Passos.
-                    </li>
+                <ul class="space-y-5 text-gray-300 text-md">
+                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">0:00</span> Introdução: Cenário Atual.</li>
+                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">03:16</span> Visão do TRE/SC</li>
+                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">04:39</span> Ações atuais</li>
+                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">06:16</span> O que pode ser feito</li>
+                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">07:00</span> Como fica o avanço tecnológico</li>
                 </ul>
             </aside>
         </div>
-
-        </div>
-            
-        </article>
 
         <hr class="border-t border-gray-700 my-10 max-w-4xl mx-auto">
 
@@ -186,6 +222,64 @@
         </div>
         </div>
     </footer>
+
+    <script>
+        const audio = document.getElementById("audioPlayer");
+        const playPauseBtn = document.getElementById("playPause");
+        const playIcon = document.getElementById("playIcon");
+        const pauseIcon = document.getElementById("pauseIcon");
+        const currentTimeEl = document.getElementById("currentTime");
+        const progressBar = document.getElementById("progressBar");
+        const currentDisplay = document.getElementById("currentDisplay");
+        const durationDisplay = document.getElementById("durationDisplay");
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60).toString().padStart(2, "0");
+            const s = Math.floor(sec % 60).toString().padStart(2, "0");
+            return `${m}:${s}`;
+        }
+
+        // Garante que a duração só seja exibida após o carregamento dos metadados
+        audio.addEventListener("loadedmetadata", () => {
+            durationDisplay.textContent = formatTime(audio.duration);
+        });
+
+        playPauseBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.classList.add("hidden");
+                pauseIcon.classList.remove("hidden");
+            } else {
+                audio.pause();
+                playIcon.classList.remove("hidden");
+                pauseIcon.classList.add("hidden");
+            }
+        });
+
+        audio.addEventListener("timeupdate", () => {
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+            currentDisplay.textContent = formatTime(audio.currentTime);
+            // Atualiza o valor da barra de progresso
+            if (!isNaN(audio.duration)) {
+                progressBar.value = (audio.currentTime / audio.duration) * 100;
+            }
+        });
+
+        // Reseta o ícone quando o áudio termina
+        audio.addEventListener("ended", () => {
+            playIcon.classList.remove("hidden");
+            pauseIcon.classList.add("hidden");
+            audio.currentTime = 0; // Volta para o início
+            currentDisplay.textContent = formatTime(0);
+        });
+
+        progressBar.addEventListener("input", () => {
+            if (!isNaN(audio.duration)) {
+                // Calcula o novo tempo e aplica ao áudio
+                audio.currentTime = (progressBar.value / 100) * audio.duration;
+            }
+        });
+    </script>
+
 </body>
 </html>
-
