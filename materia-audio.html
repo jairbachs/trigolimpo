@@ -29,59 +29,38 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .article-body p, .article-body li {
-            font-family: 'Georgia', 'Times New Roman', 'serif';
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #C0C0C0;
-        }
-        .article-body h2 {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .lead {
-            font-size: 1.5rem;
-            line-height: 2rem;
-            color: #E0E0E0;
-            font-style: italic;
-        }
-
-     
         #progressBar {
-            /* Zera a aparência padrão do navegador */
             -webkit-appearance: none;
             appearance: none;
-            background: transparent; /* Remove o fundo nativo */
+            background: transparent;
             cursor: pointer;
-            height: 8px;
+            height: 4px;
             width: 100%;
         }
-
+        
         #progressBar::-webkit-slider-runnable-track {
-            background: #4B4B4B; /* Um cinza mais escuro que a barra que não foi preenchida */
-            border-radius: 4px;
-            height: 8px;
+            background: #4B4B4B;
+            border-radius: 2px;
+            height: 4px;
         }
 
-        /* O preenchimento é controlado pelo 'accent-color' no Chromium/Webkit, mas a trilha precisa ser configurada */
-        /* No Firefox, precisamos de um truque extra, mas o styling base já ajuda */
         #progressBar::-moz-range-track {
             background: #4B4B4B;
-            border-radius: 4px;
-            height: 8px;
+            border-radius: 2px;
+            height: 4px;
         }
 
         #progressBar::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            margin-top: -4px; /* Centraliza o indicador na trilha de 8px */
-            background-color: #FFD700; /* Trigo Amarelo */
+            margin-top: -6px; 
+            background-color: #FFD700;
             height: 16px;
             width: 16px;
             border-radius: 50%;
-            border: 2px solid #FFD700;
-            transition: background-color 0.15s ease-in-out;
-            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Sombra para destaque */
+            border: 0;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            transition: transform 0.15s ease-in-out;
         }
         #progressBar::-moz-range-thumb {
             background-color: #FFD700;
@@ -92,6 +71,12 @@
             box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
 
+        .article-body p, .article-body li {
+            font-family: 'Georgia', 'Times New Roman', 'serif';
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #C0C0C0;
+        }
     </style>
 </head>
 <body>
@@ -129,61 +114,73 @@
             
             <div class="lg:w-2/3 audio-player-card p-6 rounded-3xl bg-dark-box border-2 border-gray-700 shadow-xl">
                 
-                <div class="flex items-center space-x-4 mb-6">
-                    <img src="capa_audio.png" alt="Capa do Podcast" class="w-24 h-24 rounded-xl object-cover border-4 border-trigo">
+                <div class="flex flex-col items-center text-center space-y-4 mb-6">
+                    <img src="capa_audio.png" alt="Capa do Podcast" class="w-40 h-40 rounded-xl object-cover border-4 border-trigo shadow-lg">
                     <div>
                         <p class="text-sm text-gray-400">Trigo Limpo</p>
-                        <h2 class="text-xl font-bold text-texto-claro">O que pode ser feito?</h2>
+                        <h2 class="text-2xl font-bold text-texto-claro">O que pode ser feito?</h2>
                         <p class="text-sm text-gray-500">Com Ana Rodrigues</p>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-4 my-6">
-                    <button id="playPause"
-                        class="text-4xl p-2 rounded-full text-trigo transition select-none hover:bg-white/10 active:bg-white/20">
-                        <!-- Ícone inicial de Play (substitui o emoji ▶️) -->
-                        <svg id="playIcon" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.25 5.653c0-1.427 1.529-2.342 2.706-1.656l11.54 6.348c1.17 0.643 1.17 2.313 0 2.956l-11.54 6.348c-1.177 0.686-2.706-0.229-2.706-1.656V5.653Z" clip-rule="evenodd" fill-rule="evenodd"/>
-                        </svg>
-                        <!-- Ícone de Pause (escondido inicialmente) -->
-                        <svg id="pauseIcon" class="w-8 h-8 hidden" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5.25A.75.75 0 0 1 6.75 6v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm11.25.75a.75.75 0 0 0-1.5 0v12a.75.75 0 0 0 1.5 0V6Z" />
-                        </svg>
-                    </button>
+                <div class="flex flex-col gap-3">
+                    
+                    <div class="flex items-center justify-center gap-6">
+                        <button id="rewindBtn"
+                            class="text-xl p-2 rounded-full text-texto-claro transition select-none hover:text-trigo hover:bg-white/10 active:bg-white/20">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 19l-9-7 9-7v14zM22 19h-2c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h2"/>
+                            </svg>
+                        </button>
+                        
+                        <button id="playPause"
+                            class="text-4xl p-3 rounded-full bg-trigo text-dark-box transition select-none hover:opacity-80 active:opacity-70 shadow-lg">
+                            <svg id="playIcon" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.25 5.653c0-1.427 1.529-2.342 2.706-1.656l11.54 6.348c1.17 0.643 1.17 2.313 0 2.956l-11.54 6.348c-1.177 0.686-2.706-0.229-2.706-1.656V5.653Z" clip-rule="evenodd" fill-rule="evenodd"/>
+                            </svg>
+                            <svg id="pauseIcon" class="w-7 h-7 hidden" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5.25A.75.75 0 0 1 6.75 6v12a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm11.25.75a.75.75 0 0 0-1.5 0v12a.75.75 0 0 0 1.5 0V6Z" />
+                            </svg>
+                        </button>
+                        
+                        <button id="forwardBtn"
+                            class="text-xl p-2 rounded-full text-texto-claro transition select-none hover:text-trigo hover:bg-white/10 active:bg-white/20">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l9 7-9 7V5zM2 5h2c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H2"/>
+                            </svg>
+                        </button>
 
-                    <span id="currentTime" class="text-lg font-bold text-texto-claro w-12 hidden">00:00</span>
+                        <audio id="audioPlayer" src="reportagem.mp3"></audio>
+                    </div>
 
-                    <audio id="audioPlayer" src="reportagem.mp3"></audio>
+                    <div class="flex items-center gap-2 mt-4">
+                        <span id="currentDisplay" class="text-xs font-medium text-gray-400 w-8 flex-shrink-0 text-right">00:00</span>
+                        
+                        <input id="progressBar" type="range" min="0" max="100" value="0" class="flex-grow">
+                        
+                        <span id="durationDisplay" class="text-xs font-medium text-gray-400 w-8 flex-shrink-0 text-left">00:00</span>
+                    </div>
                 </div>
-
-                <input id="progressBar" type="range" min="0" max="100" value="0"
-                        class="w-full h-2 bg-gray-600 rounded-lg cursor-pointer accent-trigo">
-
-                <div class="flex justify-between text-gray-400 text-sm mt-2">
-                    <span id="currentDisplay">00:00</span>
-                    <span id="durationDisplay">00:00</span>
-                </div>
-
             </div>
 
             <aside class="lg:w-1/3 p-6 rounded-3xl bg-dark-box border border-gray-700 shadow-xl h-fit">
-                <h3 class="text-xl font-bold text-trigo mb-3">O que você vai ouvir:</h3>
-                <ul class="space-y-5 text-gray-300 text-md">
-                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">0:00</span> Introdução: Cenário Atual.</li>
-                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">03:16</span> Visão do TRE/SC</li>
-                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">04:39</span> Ações atuais</li>
-                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">06:16</span> O que pode ser feito</li>
-                    <li class="flex items-start"><span class="text-trigo mr-2 font-bold flex-none">07:00</span> Como fica o avanço tecnológico</li>
+                <h3 class="text-xl font-bold text-trigo mb-3">O que você ouvirá:</h3>
+                <ul class="space-y-4 text-gray-300 text-sm">
+                    <li class="flex items-start cursor-pointer hover:text-trigo transition duration-150" data-timestamp="00:00"><span class="text-trigo mr-2 font-bold flex-none">0:00</span> Cenário Atual.</li>
+                    <li class="flex items-start cursor-pointer hover:text-trigo transition duration-150" data-timestamp="03:16"><span class="text-trigo mr-2 font-bold flex-none">03:16</span> Visão do TRE/SC</li>
+                    <li class="flex items-start cursor-pointer hover:text-trigo transition duration-150" data-timestamp="04:39"><span class="text-trigo mr-2 font-bold flex-none">04:39</span> Ações atuais</li>
+                    <li class="flex items-start cursor-pointer hover:text-trigo transition duration-150" data-timestamp="06:16"><span class="text-trigo mr-2 font-bold flex-none">06:16</span> O que pode ser feito</li>
+                    <li class="flex items-start cursor-pointer hover:text-trigo transition duration-150" data-timestamp="07:00"><span class="text-trigo mr-2 font-bold flex-none">07:00</span> Como fica o avanço tecnológico</li>
                 </ul>
             </aside>
+            
         </div>
-
         <hr class="border-t border-gray-700 my-10 max-w-4xl mx-auto">
 
         <div class="mt-12 pt-8">
             <h2 class="font-sans text-2xl font-bold text-trigo mb-6 text-center">Navegue por Outros Formatos</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
+                
                 <a href="materia-texto.html" class="block p-6 bg-dark-box rounded-xl hover:bg-dark-box/70 transition duration-200 border border-dark-box/50 hover:border-trigo/50 shadow-lg text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mx-auto text-trigo mb-2">
                         <path fill-rule="evenodd" d="M11.54 22.351A.75.75 0 0 1 12 22.5c.379 0 .752-.164 1.018-.476l.243-.289a4.5 4.5 0 0 0 2.214-4.872l-.128-1.037a.75.75 0 0 1 .128-.535l1.638-1.639c.07-.07.126-.155.161-.252a1.986 1.986 0 0 0 .193-.57l.03-.238a.75.75 0 0 1 .585-.758l1.455-.242a.75.75 0 0 1 .555.352c.28.47.168 1.053-.314 1.343l-1.42 1.42a.75.75 0 0 1-.53.22h-1.486c-.521 0-.96.386-1.043.918l-.206 1.305c-.075.474.072.969.419 1.344l.87.87a.75.75 0 0 1 0 1.06l-.75.75Z" clip-rule="evenodd" />
@@ -220,30 +217,59 @@
                 <a href="fale_conosco.html" class="hover:text-trigo"><strong>Sementes</strong> - Conheça a equipe por trás da reportagem</a>
             </div>
         </div>
-        </div>
     </footer>
 
     <script>
         const audio = document.getElementById("audioPlayer");
         const playPauseBtn = document.getElementById("playPause");
+        const rewindBtn = document.getElementById("rewindBtn");
+        const forwardBtn = document.getElementById("forwardBtn");
         const playIcon = document.getElementById("playIcon");
         const pauseIcon = document.getElementById("pauseIcon");
-        const currentTimeEl = document.getElementById("currentTime");
         const progressBar = document.getElementById("progressBar");
         const currentDisplay = document.getElementById("currentDisplay");
         const durationDisplay = document.getElementById("durationDisplay");
+        const chapterLinks = document.querySelectorAll('aside li');
+        const highlightColor = "#FFD700";
+        const trackColor = "#4B4B4B";
 
         function formatTime(sec) {
             const m = Math.floor(sec / 60).toString().padStart(2, "0");
             const s = Math.floor(sec % 60).toString().padStart(2, "0");
             return `${m}:${s}`;
         }
+        
+        function updateProgressBarFill() {
+            if (isNaN(audio.duration) || audio.duration === 0) return;
+            const value = (audio.currentTime / audio.duration);
+            const percentage = value * 100;
+            progressBar.style.background = `linear-gradient(to right, ${highlightColor} 0%, ${highlightColor} ${percentage}%, ${trackColor} ${percentage}%, ${trackColor} 100%)`;
+        }
 
-        // Garante que a duração só seja exibida após o carregamento dos metadados
+        function jumpToChapter(event) {
+            const timeString = event.currentTarget.getAttribute('data-timestamp');
+            const [minutes, seconds] = timeString.split(':').map(Number);
+            const timeInSeconds = minutes * 60 + seconds;
+            
+            if (!isNaN(audio.duration) && timeInSeconds < audio.duration) {
+                audio.currentTime = timeInSeconds;
+                
+                // Toca automaticamente ao pular
+                if (audio.paused) {
+                    audio.play();
+                    playIcon.classList.add("hidden");
+                    pauseIcon.classList.remove("hidden");
+                }
+            }
+        }
+
+
+
         audio.addEventListener("loadedmetadata", () => {
             durationDisplay.textContent = formatTime(audio.duration);
+            updateProgressBarFill();
         });
-
+        
         playPauseBtn.addEventListener("click", () => {
             if (audio.paused) {
                 audio.play();
@@ -256,29 +282,48 @@
             }
         });
 
+        rewindBtn.addEventListener("click", () => {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        });
+
+        forwardBtn.addEventListener("click", () => {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        });
+
         audio.addEventListener("timeupdate", () => {
-            currentTimeEl.textContent = formatTime(audio.currentTime);
             currentDisplay.textContent = formatTime(audio.currentTime);
-            // Atualiza o valor da barra de progresso
+            
             if (!isNaN(audio.duration)) {
                 progressBar.value = (audio.currentTime / audio.duration) * 100;
+                updateProgressBarFill();
             }
         });
 
-        // Reseta o ícone quando o áudio termina
         audio.addEventListener("ended", () => {
             playIcon.classList.remove("hidden");
             pauseIcon.classList.add("hidden");
-            audio.currentTime = 0; // Volta para o início
+            audio.currentTime = 0;
             currentDisplay.textContent = formatTime(0);
+            progressBar.value = 0;
+            updateProgressBarFill();
         });
+
+
 
         progressBar.addEventListener("input", () => {
             if (!isNaN(audio.duration)) {
-                // Calcula o novo tempo e aplica ao áudio
                 audio.currentTime = (progressBar.value / 100) * audio.duration;
+                updateProgressBarFill();
+                currentDisplay.textContent = formatTime(audio.currentTime);
             }
         });
+        
+
+        chapterLinks.forEach(link => {
+            link.addEventListener('click', jumpToChapter);
+        });
+
+        updateProgressBarFill();
     </script>
 
 </body>
