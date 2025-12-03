@@ -43,7 +43,6 @@
             font-style: italic;
         }
 
-        /* --- VIDEO PLAYER --- */
         .video-container {
             position: relative;
             padding-top: 56.25%;
@@ -113,7 +112,30 @@
         </div>
     </div>
 
-    <!-- resto da página permanece inalterado -->
+	<div class="max-w-5xl mx-auto">
+        	<details class="bg-dark-box p-6 rounded-xl border border-trigo/50 my-6" id="mpsc-position">
+            	<summary class="cursor-pointer flex items-center justify-between text-texto-claro font-semibold">
+                	<span>Posicionamento do Ministério Público de Santa Catarina, após o fechamento da matéria</span>
+                	<svg class="chev w-5 h-5 text-trigo ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    		<path fill-rule="evenodd" d="M6 4a1 1 0 011.707-.707l6 6a1 1 0 010 1.414l-6 6A1 1 0 016 16.293L11.586 10 6 4.707A1 1 0 016 4z" clip-rule="evenodd" />
+                	</svg>
+            	</summary>
+
+            <div class="mt-4 text-sm text-gray-300 leading-relaxed">
+                <p class="mb-4"> Em resposta enviada no dia <strong>3 de dezembro de 2025</strong>, o Ministério Público de Santa Catarina afirmou que <strong>não houve omissão</strong> na atuação do órgão. Segundo o MPSC, o Ministério Público “atuou até a última instância possível para reconhecimento da inelegibilidade e impugnação da candidatura”.</p>
+
+                <p class="mb-4">A instituição reconheceu que a “morosidade do procedimento até o trânsito em julgado nas instâncias superiores, sobretudo em virtude do manejo de diversos recursos legais pelo candidato, foi o que postergou o cumprimento da decisão do STF e o reconhecimento da perda do mandato”.</p>
+
+                <p class="mb-4">O órgão explicou que os processos que tramitam na Justiça Eleitoral, via de regra, <strong>não possuem valor da causa.</strong> Como a multa aplicada pelo tribunal foi fixada em percentual sobre um valor inexistente, isso tornou a penalidade <strong>inexequível.</strong></p>
+
+                <p class="mb-4">O Ministério Público destacou que “isso inviabilizou a execução, inexistindo outros remédios jurídicos que o MPE pudesse ter utilizado nesse ponto. Nesse aspecto, seria eventualmente cabível uma alteração legislativa pelo Congresso Nacional para fixar uma base de cálculo distinta para a multa pelos embargos protelatórios nos casos das ações que não possuem valor da causa, como o presente caso.”</p>
+
+                <p class="mb-4">O órgão também ressaltou que o MPE de 1º grau só teve ciência da decisão em <strong>17/02/2025</strong>, “data em que já havia se encerrado os mandatos para a legislatura 2021–2024, não havendo, portanto, nenhuma medida que pudesse ser tomada pelo MPE”. Explicou ainda que a <strong>perda do mandato</strong> somente poderia ter sido declarada pela <strong>Mesa Diretora da Câmara de Vereadores</strong>, o que não ocorreu em razão do término da legislatura 2020–2024.</p>
+
+                <p class="mb-0">Sobre os valores recebidos pelo candidato, o MPSC afirmou que “o exercício de fato do mandato de vereador, mesmo que posteriormente declarado irregular ou nulo, não obriga a devolução integral do subsídio recebido se o agente político exerceu suas funções de boa-fé e o pagamento não foi maior do que o legalmente devido”.</p>
+            </div>
+        </details>
+    </div>
 
 </main>
 
@@ -159,7 +181,7 @@
 
 <script>
 
-    /* ---- (1) DEFINIR THUMBNAIL AUTOMÁTICA ---- */
+
     document.addEventListener("DOMContentLoaded", () => {
         const thumb = document.getElementById("videoPlaceholder");
         const VIDEO_ID = "uLoqK6bG3K4";
@@ -168,7 +190,6 @@
             `url('https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg')`;
     });
 
-    /* ---- (2) FUNÇÃO DE REPRODUZIR O VÍDEO ---- */
     function loadVideo(videoId, containerId, placeholderId) {
         const container = document.getElementById(containerId);
         const placeholder = document.getElementById(placeholderId);
@@ -188,4 +209,3 @@
 
 </body>
 </html>
-
