@@ -1,2 +1,2 @@
 #trigolimpo
-Reportagem Multimídia de Jornalismo Político
+Produção Transmídia de Jornalismo Político
